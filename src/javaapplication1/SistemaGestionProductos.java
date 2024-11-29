@@ -57,7 +57,12 @@ public class SistemaGestionProductos {
 }
 
 
-
+/**
+ Va a consultar por grupo
+ * recibe de paremtro el grupo ingreasdo por el usuarip
+ * Programacion Funcionala
+  
+  */
     public List<ProductoBase> consultarPorGrupo(String grupo) {
     return productos.stream()
             .filter(p -> p.getGrupo().equalsIgnoreCase(grupo))
