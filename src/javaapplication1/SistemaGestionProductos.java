@@ -285,7 +285,7 @@ public void eliminarProducto(String codigo) {
     } else {
         // Eliminar el producto
         productos.remove(productoAEliminar);
-        System.out.println("Producto con código " + codigo + " ha sido eliminado.");
+        System.out.println("El producto "+"[ " + productoAEliminar + "]"+" ha sido eliminado");
     }
 }
 

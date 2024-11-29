@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         int opc = 0 ;
+        int salida; 
         boolean bandera = true; 
         Scanner datos = new Scanner(System.in);
         SistemaGestionProductos s1 = new SistemaGestionProductos();
@@ -102,6 +103,11 @@ public class Main {
             default:
                 throw new AssertionError("Salida");
         }
+            System.out.println("Presione 1 para regresar el menu principal");
+            salida = Integer.parseInt(datos.nextLine());
+            if(salida == 1){
+                bandera = true; 
+            }
         }while(bandera);
         
         
