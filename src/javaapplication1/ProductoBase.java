@@ -106,9 +106,41 @@ public abstract class ProductoBase implements Descuento{
   
     @Override
     public String toString() {
-        return "Código: " + codigo + ", Marca: " + marca + ", Presentación: " + presentacion +
-               ", Costo: " + costo + ", Precio Venta: " + precioVenta + ", Stock: " + stock +
-               ", Grupo: " + grupo + ", Categoría: " + categoria + ", Producto Específico: " + getProductoEspecifico()+ ", Descuento: "+descuento + " %";
+        // Ajustar los anchos de las columnas para no exceder el ancho del terminal
+        int anchoCodigo = 10;
+        int anchoMarca = 18;
+        int anchoPresentacion = 24;
+        int anchoCosto = 10;
+        int anchoPrecioVenta = 9;
+        int anchoStock = 8;
+        int anchoGrupo = 13;
+        int anchoCategoria = 23;
+        int anchoProductoEspecifico = 25;
+        int anchoDescuento = 10;
+
+        // Crear el formato de la tabla
+        String formato = "%-" + anchoCodigo + "s%-" + anchoMarca + "s%-" + anchoPresentacion + "s%-" +
+                         anchoCosto + "s%-" + anchoPrecioVenta + "s%-" + anchoStock + "s%-" +
+                         anchoGrupo + "s%-" + anchoCategoria + "s%-" + anchoProductoEspecifico + "s%-" +
+                         anchoDescuento + "s";
+
+        // Crear la cadena formateada para los encabezados
+        String result = String.format(formato,
+            "Código", "Marca", "Presentación", "Costo", "Precio", "Stock", "Grupo", "Categoría", "Producto Específico", "Descuento");         
+        
+        // Crear la cadena formateada para los valores
+        if(grupo.equals("Artículos de aseo")) {
+            grupo = "Aseo";
+        }
+
+        if(grupo.equals("Productos para mascotas")) {
+            grupo = "Mascotas";
+        }
+
+        result = String.format(formato,
+            codigo, marca, presentacion, costo + "$", precioVenta, stock, grupo, categoria, getProductoEspecifico(), descuento + " %");
+        
+        return result;
     }
      @Override
     public double calcularPrecioConDescuento(double descuento) {

@@ -27,8 +27,7 @@ public class ProductoEspecifico extends  ProductoBase  {
   @Override
    public void mostrarDetalles() {
     System.out.println("Detalles del Producto Específico:");
-    System.out.println("Producto Específico: " + getProductoEspecifico());
-    System.out.println("Detalles Generales:");
+    System.out.println("Nombre: " + getProductoEspecifico());
     System.out.println(super.toString());
 }
     @Override
@@ -36,9 +35,10 @@ public class ProductoEspecifico extends  ProductoBase  {
         
         super.aplicarDescuento();  // Aplica el descuento definido en la clase base
     }
+
 @Override
 public String toString() {
-    return super.toString() + ", Producto Específico: " + productoEspecifico;
+    return super.toString();
 }
 
 
