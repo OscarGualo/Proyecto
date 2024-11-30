@@ -15,7 +15,7 @@ public class SistemaGestionProductos {
     }
 
     // Cargar datos desde un archivo CSV
-  public void cargarDesdeCSV(String rutaArchivo) {
+ public void cargarDesdeCSV(String rutaArchivo) {
     try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
         String linea;
         boolean primeraLinea = true; // Para ignorar la primera línea (encabezados)
@@ -28,7 +28,7 @@ public class SistemaGestionProductos {
 
             // Dividir la línea por comas
             String[] datos = linea.split(",");
-            if (datos.length < 9) continue; // Verificar que haya suficientes columnas
+            if (datos.length < 10) continue; // Verificar que haya suficientes columnas
 
             // Limpiar datos y asignar variables
             String codigo = datos[0].trim();
@@ -44,8 +44,11 @@ public class SistemaGestionProductos {
             String categoria = datos[7].trim();
             String productoEspecifico = datos[8].trim();
 
+            // Leer el descuento (última columna en el CSV)
+            double descuento = datos[9].trim().matches("\\d+(\\.\\d+)?") ? Double.parseDouble(datos[9].trim()) : 0.0;
+
             // Crear y añadir el producto
-            ProductoBase producto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock, grupo, categoria, productoEspecifico);
+            ProductoBase producto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock, grupo, categoria, productoEspecifico, descuento);
             productos.add(producto);
         }
 
@@ -55,7 +58,6 @@ public class SistemaGestionProductos {
         e.printStackTrace();
     }
 }
-
 
 /**
  Va a consultar por grupo
@@ -172,9 +174,10 @@ public void ingresarNuevoProducto() {
 
     System.out.print("Producto específico: ");
     String productoEspecifico = scanner.nextLine();
-
+    System.out.println("Descuento");
+    double descuento = Double.parseDouble(scanner.nextLine());
     // Crear el nuevo producto
-    ProductoBase nuevoProducto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock, grupo, categoria, productoEspecifico);
+    ProductoBase nuevoProducto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock, grupo, categoria, productoEspecifico, descuento);
 
     // Agregar el producto a la lista
     productos.add(nuevoProducto);
@@ -290,31 +293,89 @@ public void eliminarProducto(String codigo) {
 }
 
     public void aplicarDescuentoAGrupo(String grupo, Descuento descuento) {
-        for (ProductoBase producto : productos) {
-            if (producto.getGrupo().equalsIgnoreCase(grupo)) {
-                producto.aplicarDescuento(descuento);
-            }
-        }
-        System.out.println("Descuento aplicado al grupo: " + grupo);
-    }
+       for (ProductoBase producto : productos) {
+        if (producto.getCodigo().equalsIgnoreCase(grupo)) {
+            producto.aplicarDescuento();  // Aplica el descuento
 
+            // Mostrar el mensaje con el nuevo precio de venta
+            System.out.println("Descuento aplicado al producto con código: " + grupo);
+            System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
+            
+        }
+    }
+    System.out.println("Producto no encontrado con el código: " + grupo);
+    }
+ 
     public void aplicarDescuentoACategoria(String categoria, Descuento descuento) {
-        for (ProductoBase producto : productos) {
-            if (producto.getCategoria().equalsIgnoreCase(categoria)) {
-                producto.aplicarDescuento(descuento);
-            }
+         for (ProductoBase producto : productos) {
+             if (producto.getCodigo().equalsIgnoreCase(categoria)) {
+            producto.aplicarDescuento();  // Aplica el descuento
+
+            // Mostrar el mensaje con el nuevo precio de venta
+            System.out.println("Descuento aplicado al producto con código: " + categoria);
+            System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
+            
         }
-        System.out.println("Descuento aplicado a la categoría: " + categoria);
+    }
+    System.out.println("Producto no encontrado con el código: " + categoria);
     }
 
-    public void aplicarDescuentoAProducto(String codigo, Descuento descuento) {
-        for (ProductoBase producto : productos) {
-            if (producto.getCodigo().equalsIgnoreCase(codigo)) {
-                producto.aplicarDescuento(descuento);
-            }
+    public void aplicarDescuentoAProducto(String codigo) {
+    for (ProductoBase producto : productos) {
+        if (producto.getCodigo().equalsIgnoreCase(codigo)) {
+            producto.aplicarDescuento();  
+            System.out.println("Descuento aplicado al producto con código: " + codigo);
+            System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
+            break;
         }
-        System.out.println("Descuento aplicado al producto con código: " + codigo);
     }
+}
+
+/*
+    
+    */
+public void aplicarDescuentoFijoPorCodigo(String codigoProducto) {
+    Scanner scanner = new Scanner(System.in);
+    boolean productoEncontrado = false;
+    double descuentoFijo;
+
+    // Pedimos el monto del descuento fijo por consola
+    System.out.print("Ingresa el monto de descuento fijo (en unidades monetarias): ");
+    descuentoFijo = scanner.nextDouble();
+
+    // Creamos una instancia de DescuentoFijo
+    DescuentoFijo descuento = new DescuentoFijo(descuentoFijo);
+
+    // Recorremos los productos
+    for (ProductoBase producto : productos) {
+        // Buscamos el producto por su código
+        if (producto.getCodigo().equalsIgnoreCase(codigoProducto)) {
+            productoEncontrado = true;
+
+            // Aplicamos el descuento fijo usando el método de DescuentoFijo
+            double nuevoPrecio = descuento.calcularPrecioConDescuento(producto.getPrecioVenta());
+
+            // Aseguramos que el precio no quede negativo
+            if (nuevoPrecio < 0) {
+                System.out.println("El descuento es mayor que el precio del producto. El precio se ajustará a 0.");
+                producto.setPrecioVenta(0);
+            } else {
+                producto.setPrecioVenta(nuevoPrecio);
+            }
+
+            // Mostramos el resultado
+            System.out.println("Descuento de " + descuentoFijo + " aplicado al producto con código: " + producto.getCodigo());
+            System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
+        }
+    }
+
+    // Si no encontramos el producto
+    if (!productoEncontrado) {
+        System.out.println("No se encontró ningún producto con el código: " + codigoProducto);
+    }
+}
+
+
     // Mostrar todos los productos
         public void mostrarProductos() {
         for (ProductoBase producto : productos) {

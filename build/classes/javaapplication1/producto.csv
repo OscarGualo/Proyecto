@@ -1,21 +1,21 @@
-Codigo,Marca,Presentación,Costo,PrecioVenta,Stock,Grupo,Categoría,ProductoEspecifico
-BG0001,Coca-Cola,Lata de 330 ml,0.80,1.50,200,Bebidas,Gaseosas,Coca-Cola Regular
-VC0001,Nestlé,Caja de 500g,1.20,2.50,150,Víveres,Cereal,Cornflakes
-AT0001,Dove,Barra de 90g,1.50,3.00,120,Artículos de aseo,Jabón de tocador,Jabón Dove Original
-PP0001,Pedigree,Bolsa de 3kg,4.50,10.00,100,Productos para mascotas,Alimento para perros,Pedigree Adulto
-VT0001,Heinz,Frasco de 400g,0.90,2.20,180,Víveres,Salsa de tomate,Salsa de Tomate Heinz
-AS0001,L'Oréal,Envase de 250ml,3.00,6.00,90,Artículos de aseo,Shampoo,Shampoo L'Oréal Elvive
-PG0001,Whiskas,Bolsa de 1.5kg,3.80,8.50,140,Productos para mascotas,Alimento para gatos,Whiskas Gato Adulto
-BG0002,Pepsi,Lata de 330 ml,0.85,1.60,250,Bebidas,Gaseosas,Pepsi Regular
-VC0002,Kellogg's,Caja de 500g,1.00,2.30,160,Víveres,Cereal,Frosted Flakes
-AC0001,Colgate,Pasta de dientes 120g,0.95,1.80,110,Artículos de aseo,Crema dental,Colgate Total
-PP0002,Pedigree,Bolsa de 1kg,2.80,5.60,130,Productos para mascotas,Alimento para perros,Pedigree Cachorros
-BM0001,Aquafina,Botella de 600ml,0.50,1.00,300,Bebidas,Agua mineral,Aquafina
-BJ0001,Capri Sun,Jugo en cartón 200ml,0.40,0.90,220,Bebidas,Jugo en cartón,Capri Sun
-VC0003,Quaker,Caja de 350g,1.30,2.70,200,Víveres,Avena,Quaker Avena Instantánea
-AS0002,Palmolive,Shampoo 250ml,1.20,2.50,150,Artículos de aseo,Shampoo,Palmolive Naturals
-PG0002,Purina,Bolsa de 2kg,4.00,9.00,140,Productos para mascotas,Alimento para gatos,Purina Cat Chow
-BM0002,San Pellegrino,Agua mineral 500ml,1.00,2.00,250,Bebidas,Agua mineral,San Pellegrino
-VT0002,La Preferida,Frasco de 250g,0.60,1.50,180,Víveres,Mostaza,Mostaza La Preferida
-AD0001,Dove,Desodorante 150ml,1.50,3.00,110,Artículos de aseo,Desodorante,Dove Original
-PP0003,Pedigree,Bolsa de 5kg,5.50,12.00,90,Productos para mascotas,Alimento para perros,Pedigree Adulto
+Código,Marca,Presentación,Costo,PrecioVenta,Stock,Grupo,Categoría,ProductoEspecifico,Descuento
+BG0001,Coca-Cola,Lata de 330 ml,0.80,1.50,200,Bebidas,Gaseosas,Coca-Cola Regular,24
+VC0001,Nestlé,Caja de 500g,1.20,2.50,150,Víveres,Cereal,Cornflakes,19
+AT0001,Dove,Barra de 90g,1.50,3.00,120,Artículos de aseo,Jabón de tocador,Jabón Dove Original,12
+PP0001,Pedigree,Bolsa de 3kg,4.50,10.00,100,Productos para mascotas,Alimento para perros,Pedigree Adulto,25
+VT0001,Heinz,Frasco de 400g,0.90,2.20,180,Víveres,Salsa de tomate,Salsa de Tomate Heinz,16
+AS0001,L'Oréal,Envase de 250ml,3.00,6.00,90,Artículos de aseo,Shampoo,Shampoo L'Oréal Elvive,22
+PG0001,Whiskas,Bolsa de 1.5kg,3.80,8.50,140,Productos para mascotas,Alimento para gatos,Whiskas Gato Adulto,28
+BG0002,Pepsi,Lata de 330 ml,0.85,1.60,250,Bebidas,Gaseosas,Pepsi Regular,17
+VC0002,Kellogg's,Caja de 500g,1.00,2.30,160,Víveres,Cereal,Frosted Flakes,14
+AC0001,Colgate,Pasta de dientes 120g,0.95,1.80,110,Artículos de aseo,Crema dental,Colgate Total,23
+PP0002,Pedigree,Bolsa de 1kg,2.80,5.60,130,Productos para mascotas,Alimento para perros,Pedigree Cachorros,30
+BM0001,Aquafina,Botella de 600ml,0.50,1.00,300,Bebidas,Agua mineral,Aquafina,15
+BJ0001,Capri Sun,Jugo en cartón 200ml,0.40,0.90,220,Bebidas,Jugo en cartón,Capri Sun,10
+VC0003,Quaker,Caja de 350g,1.30,2.70,200,Víveres,Avena,Quaker Avena Instantánea,20
+AS0002,Palmolive,Shampoo 250ml,1.20,2.50,150,Artículos de aseo,Shampoo,Palmolive Naturals,13
+PG0002,Purina,Bolsa de 2kg,4.00,9.00,140,Productos para mascotas,Alimento para gatos,Purina Cat Chow,27
+BM0002,San Pellegrino,Agua mineral 500ml,1.00,2.00,250,Bebidas,Agua mineral,San Pellegrino,18
+VT0002,La Preferida,Frasco de 250g,0.60,1.50,180,Víveres,Mostaza,Mostaza La Preferida,21
+AD0001,Dove,Desodorante 150ml,1.50,3.00,110,Artículos de aseo,Desodorante,Dove Original,24
+PP0003,Pedigree,Bolsa de 5kg,5.50,12.00,90,Productos para mascotas,Alimento para perros,Pedigree Adulto,29

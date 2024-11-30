@@ -11,18 +11,21 @@ package javaapplication1;
 public class DescuentoPorcentual implements Descuento {
     private double porcentajeDescuento;
 
+    // Constructor que recibe el porcentaje de descuento
     public DescuentoPorcentual(double porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
+    // Implementación del cálculo del precio con descuento
     @Override
     public double calcularPrecioConDescuento(double precio) {
         return precio - (precio * (porcentajeDescuento / 100));
     }
 
+    // Implementación de mostrarDetalles para mostrar el porcentaje de descuento
     @Override
     public void mostrarDetalles() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Descuento aplicado: " + porcentajeDescuento + "%");
     }
 }
 

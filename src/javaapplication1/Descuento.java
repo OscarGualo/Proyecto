@@ -9,7 +9,7 @@ package javaapplication1;
  * @author oscar
  */
 public interface Descuento {
-    
-   void mostrarDetalles();
-    double calcularPrecioConDescuento(double precio);
+    public double calcularPrecioConDescuento(double precio);
+    void mostrarDetalles();  // Método para mostrar detalles del descuento
 }
+

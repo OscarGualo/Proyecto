@@ -9,10 +9,12 @@ public abstract class ProductoBase implements Descuento{
     private int stock;
     private String grupo;
     private String categoria;
+    private double descuento; 
+  
     
         
 
-    public ProductoBase(String codigo, String marca, String presentacion, double costo, double precioVenta, int stock, String grupo, String categoria) {
+     public ProductoBase(String codigo, String marca, String presentacion, double costo, double precioVenta, int stock, String grupo, String categoria, double descuento) {
         this.codigo = codigo;
         this.marca = marca;
         this.presentacion = presentacion;
@@ -21,8 +23,15 @@ public abstract class ProductoBase implements Descuento{
         this.stock = stock;
         this.grupo = grupo;
         this.categoria = categoria;
+        this.descuento = descuento;
+    }
+    public double getDescuento() {
+        return descuento;
     }
 
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
     public String getCodigo() {
         return codigo;
     }
@@ -89,14 +98,17 @@ public abstract class ProductoBase implements Descuento{
     
     
     public abstract String getProductoEspecifico();
-    public void aplicarDescuento(Descuento descuento){
-    this.precioVenta = descuento.calcularPrecioConDescuento(this.precioVenta);
+     public void aplicarDescuento() {
+        double precioConDescuento = this.precioVenta - (this.precioVenta * (this.descuento / 100));
+        this.precioVenta = precioConDescuento;  // Actualizamos el precio
     }
+
+  
     @Override
     public String toString() {
         return "Código: " + codigo + ", Marca: " + marca + ", Presentación: " + presentacion +
                ", Costo: " + costo + ", Precio Venta: " + precioVenta + ", Stock: " + stock +
-               ", Grupo: " + grupo + ", Categoría: " + categoria + ", Producto Específico: " + getProductoEspecifico();
+               ", Grupo: " + grupo + ", Categoría: " + categoria + ", Producto Específico: " + getProductoEspecifico()+ ", Descuento: "+descuento + " %";
     }
      @Override
     public double calcularPrecioConDescuento(double descuento) {

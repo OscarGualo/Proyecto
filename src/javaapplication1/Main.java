@@ -24,6 +24,7 @@ public class Main {
             System.out.println("6.Actualizacion de productos ");
             System.out.println("7. Elimar productos");
             System.out.println("8. ver inventario");
+            System.out.println("9 Aplicar descuentos a productos");
         opc = Integer.parseInt(datos.nextLine());
         switch (opc) {
             case 1:
@@ -99,6 +100,29 @@ public class Main {
                 break;
             case 8:
                 s1.mostrarProductos();
+                break;
+            case 9 :
+                int opcCase9 ;
+                 System.out.println("1. Descuento porcentual ");
+                 System.out.println("2 .Descuento fijo ");
+                 opcCase9 = Integer.parseInt(datos.nextLine());
+                 switch (opcCase9) {
+                    case 1:
+                        String codigo;
+                        System.out.println("Ingrese el codigo del producto");
+                        codigo  = datos.nextLine();
+                        s1.aplicarDescuentoAProducto(codigo);
+                        
+                   
+                        break;
+                    case 2:
+                        String codigoDos;
+                        System.out.println("Ingrese el codigo del producto");
+                        codigoDos  = datos.nextLine();
+                        s1.aplicarDescuentoFijoPorCodigo(codigoDos);
+                        break;
+                    
+                }
                 break;
             default:
                 throw new AssertionError("Salida");
