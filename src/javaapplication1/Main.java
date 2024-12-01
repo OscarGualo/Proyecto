@@ -30,6 +30,10 @@ public class Main {
             System.out.println("9. Aplicar descuentos a productos");
             System.out.println("0. Salir del programa");
             System.out.print("\n>> ");
+                /*
+                 * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+                 * letra en vez de un número)
+                 */
                 try {
                     opc = Integer.parseInt(datos.nextLine());
                     if((opc < 0)||(opc > 9)){
@@ -57,7 +61,7 @@ public class Main {
                         break;
                     case 2:
                         int opcCasoDos;
-                        /*
+                    /*
                     * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
                     * no se encuentra en las opciones del menú 
                     */
@@ -68,7 +72,11 @@ public class Main {
                             System.out.println("3. Por su nombre");
                             System.out.println("4. Por Marca");
                             System.out.println("5. Por codigo");
-                            System.out.print("\n>> ");;
+                            System.out.print("\n>> ");
+                        /*
+                        * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+                        * letra en vez de un número)
+                        */
                         try {
                                 opcCasoDos = Integer.parseInt(datos.nextLine());
                                     if((opcCasoDos < 1)||(opcCasoDos > 5)){
@@ -280,16 +288,22 @@ public class Main {
                     return;
                 }
 
-            // try-catch para que solo se permita ingresar 1 ó 0
+            /*
+            * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
+            * no se encuentra en las opciones del menú 
+            */
             do {
+                /*
+                 * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+                 * letra en vez de un número)
+                 */
                 try {
                     System.out.print("\nPresione 0 para salir del programa o 1 para regresar al menu principal\n>> ");
                     salida = Integer.parseInt(datos.nextLine());
                     if((salida < 0)||(salida > 1)){
                         System.out.print("\nError, el numero: " + salida + " no es una opcion\n");
                         System.out.println("Intentelo de nuevo....");
-                    }
-                    
+                    } 
                 } catch (NumberFormatException e) {
                     System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
                     salida = -1;
