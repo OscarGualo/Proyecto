@@ -34,6 +34,8 @@ public class Main {
                 if ((opc< 0)||(opc > 9)) { 
                     System.out.println("Opcion Invalida. Intentelo de nuevo");
                     bandera = false;
+                }else{
+                    bandera = true;
                 }
                 
             } while (!bandera);
