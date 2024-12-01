@@ -241,7 +241,7 @@ public class Main {
 
                         }
 
-                        System.out.print("\nIngrese cualquier numero para aplicar otro descuento o 0 para salir\n>> ");
+                        System.out.print("\nIngrese cualquier numero para aplicar otro descuento o 0 para salir1\n>> ");
                         String opcion = datos.nextLine();
 
                         if (opcion.equals("0")) {
