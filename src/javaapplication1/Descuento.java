@@ -10,6 +10,6 @@ package javaapplication1;
  */
 public interface Descuento {
     public double calcularPrecioConDescuento(double precio);
-    void mostrarDetalles();  // Método para mostrar detalles del descuento
-}
 
+    void mostrarDetalles(); // Método para mostrar detalles del descuento
+}

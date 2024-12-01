@@ -1,6 +1,6 @@
 package javaapplication1;
 
-public abstract class ProductoBase implements Descuento{
+public abstract class ProductoBase implements Descuento {
     private String codigo;
     private String marca;
     private String presentacion;
@@ -9,12 +9,10 @@ public abstract class ProductoBase implements Descuento{
     private int stock;
     private String grupo;
     private String categoria;
-    private double descuento; 
-  
-    
-        
+    private double descuento;
 
-     public ProductoBase(String codigo, String marca, String presentacion, double costo, double precioVenta, int stock, String grupo, String categoria, double descuento) {
+    public ProductoBase(String codigo, String marca, String presentacion, double costo, double precioVenta, int stock,
+            String grupo, String categoria, double descuento) {
         this.codigo = codigo;
         this.marca = marca;
         this.presentacion = presentacion;
@@ -25,6 +23,7 @@ public abstract class ProductoBase implements Descuento{
         this.categoria = categoria;
         this.descuento = descuento;
     }
+
     public double getDescuento() {
         return descuento;
     }
@@ -32,6 +31,7 @@ public abstract class ProductoBase implements Descuento{
     public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
+
     public String getCodigo() {
         return codigo;
     }
@@ -95,15 +95,14 @@ public abstract class ProductoBase implements Descuento{
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
-    
+
     public abstract String getProductoEspecifico();
-     public void aplicarDescuento() {
+
+    public void aplicarDescuento() {
         double precioConDescuento = this.precioVenta - (this.precioVenta * (this.descuento / 100));
-        this.precioVenta = precioConDescuento;  // Actualizamos el precio
+        this.precioVenta = precioConDescuento; // Actualizamos el precio
     }
 
-  
     @Override
     public String toString() {
         // Ajustar los anchos de las columnas para no exceder el ancho del terminal
@@ -115,34 +114,37 @@ public abstract class ProductoBase implements Descuento{
         int anchoStock = 8;
         int anchoGrupo = 13;
         int anchoCategoria = 23;
-        int anchoProductoEspecifico = 25;
+        int anchoProductoEspecifico = 28;
         int anchoDescuento = 10;
 
         // Crear el formato de la tabla
         String formato = "%-" + anchoCodigo + "s%-" + anchoMarca + "s%-" + anchoPresentacion + "s%-" +
-                         anchoCosto + "s%-" + anchoPrecioVenta + "s%-" + anchoStock + "s%-" +
-                         anchoGrupo + "s%-" + anchoCategoria + "s%-" + anchoProductoEspecifico + "s%-" +
-                         anchoDescuento + "s";
+                anchoCosto + "s%-" + anchoPrecioVenta + "s%-" + anchoStock + "s%-" +
+                anchoGrupo + "s%-" + anchoCategoria + "s%-" + anchoProductoEspecifico + "s%-" +
+                anchoDescuento + "s";
 
         // Crear la cadena formateada para los encabezados
         String result = String.format(formato,
-            "Código", "Marca", "Presentación", "Costo", "Precio", "Stock", "Grupo", "Categoría", "Producto Específico", "Descuento");         
-        
+                "Código", "Marca", "Presentación", "Costo", "Precio", "Stock", "Grupo", "Categoría",
+                "Producto Específico", "Descuento");
+
         // Crear la cadena formateada para los valores
-        if(grupo.equals("Artículos de aseo")) {
+        if (grupo.equals("Artículos de aseo")) {
             grupo = "Aseo";
         }
 
-        if(grupo.equals("Productos para mascotas")) {
+        if (grupo.equals("Productos para mascotas")) {
             grupo = "Mascotas";
         }
 
         result = String.format(formato,
-            codigo, marca, presentacion, costo + "$", precioVenta, stock, grupo, categoria, getProductoEspecifico(), descuento + " %");
-        
+                codigo, marca, presentacion, costo + "$", precioVenta, stock, grupo, categoria, getProductoEspecifico(),
+                descuento + " %");
+
         return result;
     }
-     @Override
+
+    @Override
     public double calcularPrecioConDescuento(double descuento) {
         return precioVenta - (precioVenta * descuento);
     }

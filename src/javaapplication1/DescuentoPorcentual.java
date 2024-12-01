@@ -28,4 +28,3 @@ public class DescuentoPorcentual implements Descuento {
         System.out.println("Descuento aplicado: " + porcentajeDescuento + "%");
     }
 }
-
