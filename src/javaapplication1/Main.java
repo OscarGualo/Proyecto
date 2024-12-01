@@ -47,8 +47,6 @@ public class Main {
                 }
                 
             } while (!bandera);
-            
-            try {
                 switch (opc) {
                     case 1:
                         // Pedir la ruta del archivo para que el programa funcione en multiples máquinas
@@ -89,8 +87,8 @@ public class Main {
                         
                         } while (!bandera);
                     // Menú del caso 2
-                    try {
-                    switch (opcCasoDos) {
+                        try{
+                        switch (opcCasoDos) {
                                 case 1:
                                     while (true) {
                                         s1.mostrarGrupos();
@@ -101,6 +99,7 @@ public class Main {
                                         }
                                         List<ProductoBase> productosPorGrupo = s1.consultarPorGrupo(grupo);
                                         if (productosPorGrupo.isEmpty()) {
+                                            //Excepcion que se lanza si no se encuentran productos en el grupo
                                             throw new ProductoNoEncontradoException("No se encontraron productos en el grupo: " + grupo);
                                         }
                                         s1.mostrarResultados(productosPorGrupo);
@@ -117,6 +116,7 @@ public class Main {
                                         }
                                         List<ProductoBase> productosPorCategoria = s1.consultarPorCategoria(categoria);
                                         if (productosPorCategoria.isEmpty()) {
+                                            //Excepcion que se lanza si no se encuentran productos en la categoria
                                             throw new ProductoNoEncontradoException("No se encontraron productos en la categoria: " + categoria);  
                                         }
                                         s1.mostrarResultados(productosPorCategoria);
@@ -133,6 +133,7 @@ public class Main {
                                         }
                                         List<ProductoBase> productosPorNombre = s1.consultarPorProductoEspecifico(nombre);
                                         if (productosPorNombre.isEmpty()) {
+                                            //Excepcion que se lanza si no se encuentran productos en el nombre
                                             throw new ProductoNoEncontradoException("No se encontraron productos en la nombre: " + nombre);  
                                         }
                                         s1.mostrarResultados(productosPorNombre);
@@ -149,7 +150,8 @@ public class Main {
                                         }
                                         List<ProductoBase> productosPorMarca = s1.consultarPorMarca(marca);
                                         if (productosPorMarca.isEmpty()) {
-                                            throw new ProductoNoEncontradoException("No se encontraron productos en la nombre: " + marca);  
+                                            //Excepcion que se lanza si no se encuentran productos en la marca
+                                            throw new ProductoNoEncontradoException("No se encontraron productos en la marca: " + marca);  
                                         }
                                         s1.mostrarResultados(productosPorMarca);
                                     }
@@ -164,7 +166,8 @@ public class Main {
                                         }
                                         List<ProductoBase> productosPorCodigo = s1.consultarPorCodigo(codigo);
                                         if (productosPorCodigo.isEmpty()) {
-                                            throw new ProductoNoEncontradoException("No se encontraron productos en la nombre: " + codigo);  
+                                            //Excepcion que se lanza si no se encuentran productos en e codigo
+                                            throw new ProductoNoEncontradoException("No se encontraron productos en el codigo: " + codigo);  
                                         }
                                         s1.mostrarResultados(productosPorCodigo);
                                     }
@@ -275,7 +278,7 @@ public class Main {
                     salida = 0;
                     System.out.print("\nSaliendo del programa...\n\n");
                     return;
-            }
+                }
 
             // try-catch para que solo se permita ingresar 1 ó 0
             do {
