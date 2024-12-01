@@ -13,6 +13,10 @@ public class Main {
         SistemaGestionProductos s1 = new SistemaGestionProductos();
 
         do {
+            /*
+             * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
+             * no se encuentra en las opciones del menú 
+             */
             do {
                 System.out.println("\nSistema de Gestion de Alimentos");
                 System.out.println("1. Cargar Informacion");
@@ -54,14 +58,36 @@ public class Main {
                     break;
                 case 2:
                     int opcCasoDos;
-                    System.out.println("\nConsulta de productos por criterios");
-                    System.out.println("1. Por grupo ");
-                    System.out.println("2. Por categoria");
-                    System.out.println("3. Por su nombre");
-                    System.out.println("4. Por Marca");
-                    System.out.println("5. Por codigo");
-                    System.out.print("\n>> ");
-                    opcCasoDos = Integer.parseInt(datos.nextLine());
+                    /*
+                    * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
+                    * no se encuentra en las opciones del menú 
+                    */
+                    do {
+                        System.out.println("\nConsulta de productos por criterios");
+                        System.out.println("1. Por grupo ");
+                        System.out.println("2. Por categoria");
+                        System.out.println("3. Por su nombre");
+                        System.out.println("4. Por Marca");
+                        System.out.println("5. Por codigo");
+                        System.out.print("\n>> ");;
+                        try {
+                            opcCasoDos = Integer.parseInt(datos.nextLine());
+                            if((opcCasoDos < 1)||(opcCasoDos > 5)){
+                                System.out.print("\nError, el numero: " + opcCasoDos + " no es una opcion\n");
+                                System.out.println("Intentelo de nuevo....");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
+                            opcCasoDos = -1;
+                        }
+                        if ((opcCasoDos< 1)||(opcCasoDos > 9)) { 
+                            bandera = false;
+                        }else{
+                            bandera = true;
+                        }
+                        
+                    } while (!bandera);
+                    // Menú del caso 2
                     switch (opcCasoDos) {
                         case 1:
                             while (true) {
@@ -173,10 +199,31 @@ public class Main {
                 case 9:
                     int opcCase9;
                     while (true) {
-
-                        System.out.println("\n1. Descuento porcentual");
-                        System.out.print("2. Descuento fijo \n>> ");
-                        opcCase9 = Integer.parseInt(datos.nextLine());
+                        /*
+                        * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
+                        * no se encuentra en las opciones del menú 
+                        */    
+                        do {
+                            System.out.println("Escoja el tipo de descuento: ");
+                            System.out.println("\n1. Descuento porcentual");
+                            System.out.print("2. Descuento fijo \n>> ");
+                            try {
+                                opcCase9 = Integer.parseInt(datos.nextLine());
+                                if((opcCase9 < 1)||(opcCase9 > 2)){
+                                    System.out.print("\nError, el numero: " + opcCase9 + " no es una opcion\n");
+                                    System.out.println("Intentelo de nuevo....");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
+                                opcCase9 = -1;
+                            }
+                            if ((opcCase9< 1)||(opcCase9 > 2)) { 
+                                bandera = false;
+                            }else{
+                                bandera = true;
+                            }
+                        } while (!bandera);
+                        // Menú del caso 9
                         switch (opcCase9) {
                             case 1:
                                 String codigo;
@@ -194,7 +241,7 @@ public class Main {
 
                         }
 
-                        System.out.print("\nIngrese 0 para salir o cualquier numero para aplicar otro descuento\n>> ");
+                        System.out.print("\nIngrese cualquier numero para aplicar otro descuento o 0 para salir\n>> ");
                         String opcion = datos.nextLine();
 
                         if (opcion.equals("0")) {
