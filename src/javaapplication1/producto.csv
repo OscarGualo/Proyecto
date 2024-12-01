@@ -1,21 +1,111 @@
-Código,Marca,Presentación,Costo,PrecioVenta,Stock,Grupo,Categoría,ProductoEspecifico,Descuento
-BG0001,Coca-Cola,Lata de 330 ml,0.80,1.50,200,Bebidas,Gaseosas,Coca-Cola Regular,24
-VC0001,Nestlé,Caja de 500g,1.20,2.50,150,Víveres,Cereal,Cornflakes,19
-AT0001,Dove,Barra de 90g,1.50,3.00,120,Artículos de aseo,Jabón de tocador,Jabón Dove Original,12
-PP0001,Pedigree,Bolsa de 3kg,4.50,10.00,100,Productos para mascotas,Alimento para perros,Pedigree Adulto,25
-VT0001,Heinz,Frasco de 400g,0.90,2.20,180,Víveres,Salsa de tomate,Salsa de Tomate Heinz,16
-AS0001,L'Oréal,Envase de 250ml,3.00,6.00,90,Artículos de aseo,Shampoo,Shampoo L'Oréal Elvive,22
-PG0001,Whiskas,Bolsa de 1.5kg,3.80,8.50,140,Productos para mascotas,Alimento para gatos,Whiskas Gato Adulto,28
-BG0002,Pepsi,Lata de 330 ml,0.85,1.60,250,Bebidas,Gaseosas,Pepsi Regular,17
-VC0002,Kellogg's,Caja de 500g,1.00,2.30,160,Víveres,Cereal,Frosted Flakes,14
-AC0001,Colgate,Pasta de dientes 120g,0.95,1.80,110,Artículos de aseo,Crema dental,Colgate Total,23
-PP0002,Pedigree,Bolsa de 1kg,2.80,5.60,130,Productos para mascotas,Alimento para perros,Pedigree Cachorros,30
-BM0001,Aquafina,Botella de 600ml,0.50,1.00,300,Bebidas,Agua mineral,Aquafina,15
-BJ0001,Capri Sun,Jugo en cartón 200ml,0.40,0.90,220,Bebidas,Jugo en cartón,Capri Sun,10
-VC0003,Quaker,Caja de 350g,1.30,2.70,200,Víveres,Avena,Quaker Avena Instantánea,20
-AS0002,Palmolive,Shampoo 250ml,1.20,2.50,150,Artículos de aseo,Shampoo,Palmolive Naturals,13
-PG0002,Purina,Bolsa de 2kg,4.00,9.00,140,Productos para mascotas,Alimento para gatos,Purina Cat Chow,27
-BM0002,San Pellegrino,Agua mineral 500ml,1.00,2.00,250,Bebidas,Agua mineral,San Pellegrino,18
-VT0002,La Preferida,Frasco de 250g,0.60,1.50,180,Víveres,Mostaza,Mostaza La Preferida,21
-AD0001,Dove,Desodorante 150ml,1.50,3.00,110,Artículos de aseo,Desodorante,Dove Original,24
-PP0003,Pedigree,Bolsa de 5kg,5.50,12.00,90,Productos para mascotas,Alimento para perros,Pedigree Adulto,29
+Codigo,Marca,Presentacion,Costo,PrecioVenta,Stock,Grupo,Categoria,ProductoEspecifico,Descuento
+VC0001,CHOCAPIC, bolsa de 150 g,1.00,1.80,100,Viveres,Cereales,Corn flakes,10
+VC0001,CHOCAPIC, caja de 400 g,2.00,3.00,250,Viveres,Cereales,Corn flakes,20
+VC0001,Trix, bolsa de 150 g,1.00,1.80,80,Viveres,Cereales,Corn flakes,10
+VC0001,Trix,caja de 330 g,1.50,2.50,140,Viveres,Cereales,Corn flakes,20
+VC0001,Frosted Flakes,bolsa de 150 g,1.00,1.80,100,Viveres,Cereales,Corn flakes,10
+VC0001,Frosted Flakes,caja de 388 g,1.80,2.70,130,Viveres,Cereales,Corn flakes,20
+VC0001,Rico Arroz,bolsa de 25 lb,7.00,13.50,200,Viveres,Cereales,Arroz,15
+VC0001,Rico Arroz,costal de 100 lb,45.00,65.00,130,Viveres,Cereales,Arroz,30
+VC0001,QUAKER,bolsa de 300 g,1.30,2.10,100,Viveres,Cereales,Avena,7
+VC0001,QUAKER,bolsa de 40 g,0.90,1.50,120,Viveres,Cereales,Avena,8
+VG0001,Perla,bolsa de 50g,0.60,1.00,110,Viveres,Granos Secos,Morocho,6
+VG001,Perla,bolsa de 50g,0.70,1.30,111,Viveres,Granos Secos,Lenteja,7
+VG0001,Perla,bolsa de 50g,0.80,1.40,112,Viveres,Granos Secos,Maiz,8
+VA0001,San Carlos,bolsa de 1 Lb,0.50,0.70,113,Viveres,Azucar,Azucar,9
+VF0002,Paca,bolsa de 400 g,0.60,0.70,110,Viveres,Fideo Lazo,Fideo,10
+VF0002,Oriental,bolsa de 400 g,0.65,0.80,110,Viveres,Fideo Lazo,Fideo,10
+VF0003,Paca,bolsa de 400 g,0.50,0.70,110,Viveres,Fideo Codo,Fideo,10
+VF0003,Oriental,bolsa de 400 g,0.60,0.79,111,Viveres,Fideo Codo,Fideo,10
+VF0004,Paca,bolsa de 400 g,0.50,0.70,110,Viveres,Fideo Tornillo,Fideo,10
+VF0004,Oriental,bolsa de 400 g,0.60,0.75,110,Viveres,Fideo Tornillo,Fideo,10
+VF0005,Paca,bolsa de 400 g,0.50,0.70,110,Viveres,Fideo Tallarin,Fideo,10
+VF0005,Oriental,bolsa de 400 g,0.65,0.80,110,Viveres,Fideo Tallarin,Fideo,10
+VH0001,San Carlos,bolsa de 1 lb,0.50,0.70,118,Viveres,Harina de Maiz,Harina,14
+VH0002,San Carlos,bolsa de 1 lb,0.50,0.70,119,Viveres,Harina de Trigo,Harina,15
+VH0003,San Carlos,bolsa de 1 lb,0.50,0.70,120,Viveres,Harina de Cebada,Harina,16
+VH0004,San Carlos,bolsa de 1 lb,0.50,0.70,121,Viveres,Harina para Tortas,Harina,17
+VG0002,Royal,bolsa de 1 lb,2.70,3.25,110,Viveres,Gelatina,Gelatina,
+VM0001,Facundo,frasco de 180 g,1.30,1.75,123,Viveres,Mermelada,Mermelada,7
+VC0002,Si Cafe,tarro de 75 g,0.85,1.50,124,Viveres,Cafe Tostado y Molido,Cafe,8
+VC0003,NesCafe,tarro de 80 g,1.00,1.75,125,Viveres,Cafe liofilizado,Cafe,8
+VC0004,Buend Dia,tarro de 75 g,0.85,1.50,126,Viveres,Cafe en polvo instantaneo,Cafe,8
+VT0001,Mc CORMICK,caja de 180 g,1.00,1.20,127,Viveres,Te  en polvo,Te,5
+VT0002,Mc CORMICK,caja de 180 g,1.20,1.50,128,Viveres,Te  en infusion,Te,5
+VC0005,Lindt,bolsa de 50 g,1.30,1.80,129,Viveres,Chocolate en Polvo,Chocolate,10
+VC0006,Lindt,barra de 100 g,1.40,2.00,130,Viveres,Chocolate en barra,Chocolate,10
+VA0002,Favorita,botella de 1 L,1.70,2.30,131,Viveres,Aceite Comestible de Palma,Aceite,10
+VA0003,Favorita,botella de 1 L,1.71,2.31,132,Viveres,Aceite Comestible de Girasol,Aceite,10
+VM0002,Los 3 Chanchitos,tarro de 500 g,1.30,2.00,133,Viveres,Manteca Vegetal,Manteca Vegetal,10
+VA0003,Real,lata de 180 g,1.50,1.95,134,Viveres,Atun enlatado,Atun enlatado,10
+VA0003,Real,Tri pack (lata de 80 g),2.10,2.50,135,Viveres,Atun enlatado,Atun enlatado,11
+VA0003,Van Camps,lata de 180 g,1.50,1.95,135,Viveres,Atun enlatado,Atun enlatado,10
+VA0003,Van Camps,Tri pack (lata de 80 g),2.10,2.50,136,Viveres,Atun enlatado,Atun enlatado,11
+VM0003,Girasol,tarro de 240 g,0.90,1.50,135,Viveres,Margarina,Margarina,10
+VM0004,Girasol,tarro de 530 g,1.70,2.40,136,Viveres,Margarina Industrial,Margarina,10
+VM0005,Maggi,frasco de 180 g,1.70,2.10,137,Viveres,Mayonesa,Salsa,10
+VS0001,Maggi,frasco de 180 g,1.60,1.85,138,Viveres,Salsa de Tomate,Salsa,10
+VM0006,Maggi,frasco de 180 g,1.60,1.85,139,Viveres,Moztasa,Salsa,10
+AJ0001,Dove,barra de 90 g,0.90,1.10,120,Articulos de Aseo,Jabon de Tocador,Jabon hidratante,5
+AJ0001,Protex,barra de 110 g,0.50,1.00,120,Articulos de Aseo,Jabon de Tocador ,Jabon de Menta,5
+AJ0001,Protex,barra de 110 g,0.50,1.00,120,Articulos de Aseo,Jabon de Tocador ,Jabon de Avena,6
+AJ0002,AromaSense,frasco de 250 mL,1.50,1..80,130,Articulos de Aseo,Jabon Liquido,Jabon de Frutos Verdes,8
+AJ0002,AromaSense,frasco de 250 mL,1.50,1..80,124,Articulos de Aseo,Jabon Liquido,Jabon de Frutos Rojos,8
+AJ0002,AromaSense,frasco de 250 mL,1.50,1..80,125,Articulos de Aseo,Jabon Liquido,Jabon de Aqua Bambu,8
+AS0001,head & shoulder,frasco de 400 mL,1.80,2.50,130,Articulos de Aseo,Shampoo,Shampoo de Menta,5
+AS0001,head & shoulder,frasco de 400 mL,1.80,2.50,110,Articulos de Aseo,Shampoo,Shampoo de Frutos rojos,5
+AS0001,head & shoulder,frasco de 400 mL,1.80,2.50,154,Articulos de Aseo,Shampoo,Shampoo Anticaspa,5
+AA0001,Pantene,frasco de 750 mL,2.00,2.70,100,Articulos de Aseo,Acondicionador,Acondicionador,5
+AD0001,Nivea,frasco de 50 g,1.50,2.25,100,Articulos de Aseo,Desodorante,Desodorante Black & White,6
+AD0001,Grillete,frasco de 50 g,1.60,2.40,100,Articulos de Aseo,Desodorante,Desodorante  Antimanchas,6
+AD0001,AXE,frasco de 50 g,1.50,2.25,100,Articulos de Aseo,Desodorante,Desodorante  Antimanchas,6
+AT0001,Simonds,tarro de 200 g,3.50,4.00,120,Articulos de Aseo,Talco,Talco,5
+AC0001,Colgate,tubo de 75 mL,0.85,1.00,175,Articulos de Aseo,Crema Dental,Crema Dental,10
+AC0001,Oral-B,tubo de 75 mL,0.90,1.25,175,Articulos de Aseo,Crema Dental,Crema Dental,10
+AD0002,Deja,funda de 5 kg,1.70,2.30,140,Articulos de Aseo,Detergente en Polvo,Detergente,8
+AD0002,Ciclon,funda de 5 kg,2.00,2.50,140,Articulos de Aseo,Detergente en Polvo,Detergente,9
+AD0003,Ciclon,frasco de 1.9 L,2,25,3.00,140,Articulos de Aseo,Detergente Liquido,Detergente,8
+AP0001,Familia,4 rollos,2.70,3.50,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
+AP0001,Familia,6 rollos,3.20,4.00,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
+AP0001,Hada,4 rollos,0.85,1.25,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
+AP0001,Hada,6 rollos,1.50,2.00,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
+AC0002,LAVA,tarro de 450 g,1.20,1.70,120,Articulos de Aseo,Crema Lavavajillas,Crema Lavavajillas,8
+AC0002,Tips,tarro de 900 g,1.10,1.55,120,Articulos de Aseo,Crema Lavavajillas,Crema Lavavajillas,8
+AD0004,Estrella,frasco de 550 mL,2.10,3.00,110,Articulos de Aseo,Desengrasante,Desengrasante,5
+PA0001,RINGO,bulto  de 30 kl,35.00,44.00,160,Productos para Mascotas,Alimento para Perros,Alimento para Perros,6
+PA0001,DOG CHOW,bulto  de 30 kl,30.00,39.00,160,Productos para Mascotas,Alimento para Perros,Alimento para Perros,7
+PA0001,Pro-can,bulto  de 30 kl,20.00,35.00,160,Productos para Mascotas,Alimento para Perros,Alimento para Perros,8
+PA0002,Gati,bulto  de 15 kl,28.00,37.00,110,Productos para Mascotas,Alimento para Gatos,Alimento para Gatos,4
+PA0002,CAT,bulto  de 15 kl,25.00,30.00,110,Productos para Mascotas,Alimento para Gatos,Alimento para Gatos,4
+PA0003,NutraPro,bulto de 15 kg ,18.50,23.05,100,Productos para Mascotas,Arena para Gatos,Arena para Gatos,3
+PJ0001,KONG,3 pelotas,15.0,22.00,150,Productos para Mascotas,Juguetes para Mascotas,Pelota,5
+PJ0002,KONG,peluche mediano,7.50,12.00,150,Productos para Mascotas,Juguetes para Mascotas,Peluches,5
+PJ0003,KONG,gigante,9.00,13.00,150,Productos para Mascotas,Juguetes para Mascotas,Huesos de plastico,5
+PA0004,FURminator,mediano,25.00,34.00,135,Productos para Mascotas,Articulos de aseo para mascota,Peines,5
+PA0004,FURminator,mediano,9.50,12.10,135,Productos para Mascotas,Articulos de aseo para mascota,Palas,4
+PA0004,FURminator,tubo de 1.5 mL,10.00,17.00,135,Productos para Mascotas,Articulos de aseo para mascota,Pipetas,3
+PC0001,RIMAX,extra grande,45.10,54.85,110,Productos para Mascotas,Casas para Perros,Casas para Perros de Madera,5
+BG0001,Coca Cola,6 latas de 600g,5.30,7.50,111,Bebidas,Gaseosas,Gaseosas,6
+BG0001,Coca Cola,botella  de 1.5 L,1.50,2.20,150,Bebidas,Gaseosas,Gaseosas,10
+BG0001,Coca Cola,botella de  3 L,3.10,4.00,160,Bebidas,Gaseosas,Gaseosas,10
+BG0001,Pepsi,botella de 355 mL,1.20,2.00,160,Bebidas,Gaseosas,Gaseosas,10
+BG0001,Pepsi,botella de 2 L,2.90,3.50,160,Bebidas,Gaseosas,Gaseosas,10
+BA0001,Tesalia,galon de 6 L,3.40,4.20,130,Bebidas,Agua Mineral,Agua,4
+BA0001,Tesalia,botella de 625 mL,0.50,0.90,140,Bebidas,Agua Mineral,Agua,10
+BA0002,Agua Viva,bidon de 10 L,4.00,6.00,150,Bebidas,Agua Embotellada,Agua,5
+BE0001,Monster,lata de 473 mL,2.90,3.75,200,Bebidas,Energizantes,Energizantes,6
+BE0001,Red Bul,lata de 355 mL,2.50,2.90,190,Bebidas,Energizantes,Energizantes,6
+BJ0001,Natura,carton de 1 L,5.18,6.68,130,Bebidas,Jugo de Carton,Jugos,3
+BJ0001,Del Valle,carton de 1 L,5.19,6.69,130,Bebidas,Jugo de Carton,Jugos,3
+BJ0001,Pulp,carton de 1 L,5.20,6.70,130,Bebidas,Jugo de Carton,Jugos,3
+BC0001,Pilsener,lata de 355 mL,0.70,1.10,140,Bebidas,Cerveza,Cerveza,7
+BC0001,Pilsener,6 pack de latas de 355 mL,4.25,6.10,110,Bebidas,Cerveza,Cerveza,4
+BC0001,Pilsener,botella de 1 L,1.70,2.10,150,Bebidas,Cerveza,Cerveza,24
+BV0001,Don Simon,carton de 1 L,22.00,30.00,120,Bebidas,Vino de Carton,Vino de Carton,10
+BV0002,Massolino Barolo,botella de 1 L,44.00,53.00,110,Bebidas,Vino de Botella,Vino de Botella,8
+BV0002,Duckhorn Merlot,botella de 1 L,95.00,110.00,50,Bebidas,Vino de Botella,Vino de Botella,5
+BV0002,Resonance Pinot,botella de 1 L,35.00,43.00,80,Bebidas,Vino de Botella,Vino de Botella,8
+BB0001,SMIRNDFF,carton de 1 L,12.00,15.50,110,Bebidas,Bebidas Alcoholicas en Carton,Bebidas Alcoholicas,7
+BB0002,BICARDI,botella de 1 L,17.50,23.10,130,Bebidas,Bebidad Alcoholicas en Botella,Bebidas Alcoholicas,11
+BB0002,BICARDI,botella de 1 L,17.51,23.11,130,Bebidas,Bebidad Alcoholicas en Botella,Bebidas Alcoholicas,11
+BB0002,BICARDI,botella de 1 L,17.52,23.12,130,Bebidas,Bebidad Alcoholicas en Botella,Bebidas Alcoholicas,11
