@@ -111,6 +111,11 @@ public class SistemaGestionProductos {
     }
 
     public void mostrarResultados(List<ProductoBase> productosFiltrados) {
+        System.out
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
+
         if (productosFiltrados.isEmpty()) {
             System.out.println("No se encontraron productos que coincidan con los criterios.");
         } else {
@@ -123,7 +128,7 @@ public class SistemaGestionProductos {
     public List<ProductoBase> consultarPorCodigo(String codigo) {
         List<ProductoBase> productosFiltrados = new ArrayList<>();
         for (ProductoBase producto : productos) {
-            if (producto.getCodigo().equalsIgnoreCase(codigo.trim())) {
+            if (producto.getCodigo().equals(codigo)) {
                 productosFiltrados.add(producto);
             }
         }
@@ -145,10 +150,17 @@ public class SistemaGestionProductos {
         if (productos.isEmpty()) {
             System.out.println("No hay productos disponibles en el sistema.");
         } else {
-            System.out.println("Consulta de stock de los productos:");
+            // Imprimir el encabezado con el formato adecuado
+            System.out
+                    .println(String.format("%-30s %-20s %-20s %-10s", "\nProducto:", " Código:", "Marca:", "Stock:\n"));
+
+            // Recorrer la lista de productos y mostrar cada uno con el formato adecuado
             for (ProductoBase producto : productos) {
-                System.out.println("Producto: " + producto.getCodigo() + " - " + producto.getMarca() + " - Stock: "
-                        + producto.getStock());
+                System.out.println(String.format("%-30s %-19s %-20s %-10d",
+                        producto.getProductoEspecifico(),
+                        producto.getCodigo(),
+                        producto.getMarca(),
+                        producto.getStock()));
             }
         }
     }
@@ -156,126 +168,149 @@ public class SistemaGestionProductos {
     public void ingresarNuevoProducto() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Ingrese los detalles del nuevo producto:");
+        while (true) {
+            System.out.println("\nIngrese los detalles del nuevo producto:");
 
-        System.out.print("Código: ");
-        String codigo = scanner.nextLine();
+            System.out.print("Código: ");
+            String codigo = scanner.nextLine();
 
-        System.out.print("Marca: ");
-        String marca = scanner.nextLine();
+            System.out.print("Marca: ");
+            String marca = scanner.nextLine();
 
-        System.out.print("Presentación: ");
-        String presentacion = scanner.nextLine();
+            System.out.print("Presentación: ");
+            String presentacion = scanner.nextLine();
 
-        System.out.print("Costo: ");
-        double costo = Double.parseDouble(scanner.nextLine());
+            System.out.print("Costo: ");
+            double costo = Double.parseDouble(scanner.nextLine());
 
-        System.out.print("Precio de venta: ");
-        double precioVenta = Double.parseDouble(scanner.nextLine());
+            System.out.print("Precio de venta: ");
+            double precioVenta = Double.parseDouble(scanner.nextLine());
 
-        System.out.print("Stock: ");
-        int stock = Integer.parseInt(scanner.nextLine());
+            System.out.print("Stock: ");
+            int stock = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Grupo: ");
-        String grupo = scanner.nextLine();
+            System.out.print("Grupo: ");
+            String grupo = scanner.nextLine();
 
-        System.out.print("Categoría: ");
-        String categoria = scanner.nextLine();
+            System.out.print("Categoría: ");
+            String categoria = scanner.nextLine();
 
-        System.out.print("Producto específico: ");
-        String productoEspecifico = scanner.nextLine();
-        System.out.println("Descuento");
-        double descuento = Double.parseDouble(scanner.nextLine());
-        // Crear el nuevo producto
-        ProductoBase nuevoProducto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock,
-                grupo, categoria, productoEspecifico, descuento);
+            System.out.print("Producto específico: ");
+            String productoEspecifico = scanner.nextLine();
 
-        // Agregar el producto a la lista
-        productos.add(nuevoProducto);
-        System.out.println("Producto agregado correctamente.");
+            System.out.print("Descuento: ");
+            double descuento = Double.parseDouble(scanner.nextLine());
+
+            // Crear el nuevo producto
+            ProductoBase nuevoProducto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock,
+                    grupo, categoria, productoEspecifico, descuento);
+
+            // Agregar el producto a la lista
+            productos.add(nuevoProducto);
+            System.out.println("\nProducto agregado correctamente.\n");
+
+            System.out.println("\nIngrese 0 para salir o cualquier numero para ingresar otro producto\n>> ");
+            String opcion = scanner.nextLine();
+            if (opcion.equals("0")) {
+                break;
+            }
+        }
     }
 
     public void actualizarProducto() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Ingrese el código del producto que desea actualizar: ");
-        String codigo = scanner.nextLine();
+        while (true) {
+            System.out.print("Ingrese el código del producto que desea actualizar: \n>> ");
+            String codigo = scanner.nextLine();
 
-        // Buscar el producto por código
-        ProductoBase producto = null;
-        for (ProductoBase p : productos) {
-            if (p.getCodigo().equalsIgnoreCase(codigo)) {
-                producto = p;
+            // Buscar el producto por código
+            ProductoBase producto = null;
+            for (ProductoBase p : productos) {
+                if (p.getCodigo().equalsIgnoreCase(codigo)) {
+                    producto = p;
+                    break;
+                }
+            }
+
+            if (producto == null) {
+                System.out.println("\nProducto no encontrado.");
+                return;
+            }
+
+            // Si el producto se encuentra, pedimos los nuevos valores
+            System.out
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
+
+            producto.mostrarDetalles();
+
+            // Actualizar los atributos
+            System.out.println("\n¿Qué desea actualizar?");
+            System.out.println("1. Costo");
+            System.out.println("2. Precio de venta");
+            System.out.println("3. Stock");
+            System.out.println("4. Marca");
+            System.out.println("5. Presentación");
+            System.out.println("6. Grupo");
+            System.out.print("7. Categoría\n>> ");
+
+            int opcion = Integer.parseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese el nuevo costo: ");
+                    double nuevoCosto = Double.parseDouble(scanner.nextLine());
+                    producto.setCosto(nuevoCosto);
+                    System.out.println("Costo actualizado.");
+                    break;
+                case 2:
+                    System.out.print("Ingrese el nuevo precio de venta: ");
+                    double nuevoPrecioVenta = Double.parseDouble(scanner.nextLine());
+                    producto.setPrecioVenta(nuevoPrecioVenta);
+                    System.out.println("Precio de venta actualizado.");
+                    break;
+                case 3:
+                    System.out.print("Ingrese el nuevo stock: ");
+                    int nuevoStock = Integer.parseInt(scanner.nextLine());
+                    producto.setStock(nuevoStock);
+                    System.out.println("Stock actualizado.");
+                    break;
+                case 4:
+                    System.out.print("Ingrese la nueva marca: ");
+                    String nuevaMarca = scanner.nextLine();
+                    producto.setMarca(nuevaMarca);
+                    System.out.println("Marca actualizada.");
+                    break;
+                case 5:
+                    System.out.print("Ingrese la nueva presentación: ");
+                    String nuevaPresentacion = scanner.nextLine();
+                    producto.setPresentacion(nuevaPresentacion);
+                    System.out.println("Presentación actualizada.");
+                    break;
+                case 6:
+                    System.out.print("Ingrese el nuevo grupo: ");
+                    String nuevoGrupo = scanner.nextLine();
+                    producto.setGrupo(nuevoGrupo);
+                    System.out.println("Grupo actualizado.");
+                    break;
+                case 7:
+                    System.out.print("Ingrese la nueva categoría: ");
+                    String nuevaCategoria = scanner.nextLine();
+                    producto.setCategoria(nuevaCategoria);
+                    System.out.println("Categoría actualizada.");
+                    break;
+
+                default:
+                    System.out.println("\nOpción no válida.");
+            }
+
+            System.out.print("\nIngrese 0 para salir o cualquier numero para ingresar otro producto\n>> ");
+            String opc = scanner.nextLine();
+            if (opc.equals("0")) {
                 break;
             }
-        }
-
-        if (producto == null) {
-            System.out.println("Producto no encontrado.");
-            return;
-        }
-
-        // Si el producto se encuentra, pedimos los nuevos valores
-        System.out.println("Producto encontrado: " + producto.getCodigo() + " - " + producto.getMarca());
-
-        // Actualizar los atributos
-        System.out.println("¿Qué desea actualizar?");
-        System.out.println("1. Costo");
-        System.out.println("2. Precio de venta");
-        System.out.println("3. Stock");
-        System.out.println("4. Marca");
-        System.out.println("5. Presentación");
-        System.out.println("6. Grupo");
-        System.out.println("7. Categoría");
-
-        int opcion = Integer.parseInt(scanner.nextLine());
-
-        switch (opcion) {
-            case 1:
-                System.out.print("Ingrese el nuevo costo: ");
-                double nuevoCosto = Double.parseDouble(scanner.nextLine());
-                producto.setCosto(nuevoCosto);
-                System.out.println("Costo actualizado.");
-                break;
-            case 2:
-                System.out.print("Ingrese el nuevo precio de venta: ");
-                double nuevoPrecioVenta = Double.parseDouble(scanner.nextLine());
-                producto.setPrecioVenta(nuevoPrecioVenta);
-                System.out.println("Precio de venta actualizado.");
-                break;
-            case 3:
-                System.out.print("Ingrese el nuevo stock: ");
-                int nuevoStock = Integer.parseInt(scanner.nextLine());
-                producto.setStock(nuevoStock);
-                System.out.println("Stock actualizado.");
-                break;
-            case 4:
-                System.out.print("Ingrese la nueva marca: ");
-                String nuevaMarca = scanner.nextLine();
-                producto.setMarca(nuevaMarca);
-                System.out.println("Marca actualizada.");
-                break;
-            case 5:
-                System.out.print("Ingrese la nueva presentación: ");
-                String nuevaPresentacion = scanner.nextLine();
-                producto.setPresentacion(nuevaPresentacion);
-                System.out.println("Presentación actualizada.");
-                break;
-            case 6:
-                System.out.print("Ingrese el nuevo grupo: ");
-                String nuevoGrupo = scanner.nextLine();
-                producto.setGrupo(nuevoGrupo);
-                System.out.println("Grupo actualizado.");
-                break;
-            case 7:
-                System.out.print("Ingrese la nueva categoría: ");
-                String nuevaCategoria = scanner.nextLine();
-                producto.setCategoria(nuevaCategoria);
-                System.out.println("Categoría actualizada.");
-                break;
-
-            default:
-                System.out.println("Opción no válida.");
         }
     }
 
@@ -296,7 +331,14 @@ public class SistemaGestionProductos {
         } else {
             // Eliminar el producto
             productos.remove(productoAEliminar);
-            System.out.println("El producto " + "[ " + productoAEliminar + "]" + " ha sido eliminado");
+            System.out.println("\nEl siguiente producto: ");
+            System.out
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
+
+            productoAEliminar.mostrarDetalles();
+            System.out.println("\nHa sido eliminado");
         }
     }
 
@@ -332,7 +374,7 @@ public class SistemaGestionProductos {
         for (ProductoBase producto : productos) {
             if (producto.getCodigo().equalsIgnoreCase(codigo)) {
                 producto.aplicarDescuento();
-                System.out.println("Descuento aplicado al producto con código: " + codigo);
+                System.out.println("\nDescuento aplicado al producto con código: " + codigo);
                 System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
                 break;
             }
@@ -348,8 +390,8 @@ public class SistemaGestionProductos {
         double descuentoFijo;
 
         // Pedimos el monto del descuento fijo por consola
-        System.out.print("Ingresa el monto de descuento fijo (en unidades monetarias): ");
-        descuentoFijo = scanner.nextDouble();
+        System.out.print("\nIngresa el monto de descuento fijo (en unidades monetarias): ");
+        descuentoFijo = Double.parseDouble(scanner.nextLine());
 
         // Creamos una instancia de DescuentoFijo
         DescuentoFijo descuento = new DescuentoFijo(descuentoFijo);
@@ -365,7 +407,8 @@ public class SistemaGestionProductos {
 
                 // Aseguramos que el precio no quede negativo
                 if (nuevoPrecio < 0) {
-                    System.out.println("El descuento es mayor que el precio del producto. El precio se ajustará a 0.");
+                    System.out
+                            .println("\nEl descuento es mayor que el precio del producto. El precio se ajustará a 0.");
                     producto.setPrecioVenta(0);
                 } else {
                     producto.setPrecioVenta(nuevoPrecio);
@@ -373,7 +416,8 @@ public class SistemaGestionProductos {
 
                 // Mostramos el resultado
                 System.out.println(
-                        "Descuento de " + descuentoFijo + " aplicado al producto con código: " + producto.getCodigo());
+                        "\nDescuento de " + descuentoFijo + " aplicado al producto con código: "
+                                + producto.getCodigo());
                 System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
             }
         }
@@ -386,8 +430,10 @@ public class SistemaGestionProductos {
 
     // Mostrar todos los productos
     public void mostrarProductos() {
-        System.out.println("Código    " + "Marca             " + "Presentación            " + "Costo     " + "Precio   "
-                + "Stock   " + "Grupo        " + "Categoría              " + "Producto Específico      " + "Descuento ");
+        System.out
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
 
         for (ProductoBase producto : productos) {
             System.out.println(producto);
@@ -397,7 +443,7 @@ public class SistemaGestionProductos {
     // Mostrar grupos sin repetir
     public void mostrarGrupos() {
         Set<String> grupos = new HashSet<>();
-        System.out.println("\n");
+        System.out.println("\nGrupos: ");
         for (ProductoBase productoBase : productos) {
             grupos.add(productoBase.getGrupo());
         }
@@ -410,7 +456,7 @@ public class SistemaGestionProductos {
     // mostrar categoria sin repetir
     public void mostrarCategorias() {
         Set<String> grupos = new HashSet<>();
-        System.out.println("\n");
+        System.out.println("\nCategoria:");
         for (ProductoBase productoBase : productos) {
             grupos.add(productoBase.getCategoria());
         }
@@ -424,7 +470,7 @@ public class SistemaGestionProductos {
     // mostrar nombres sin repetir
     public void mostrarNombreProductos() {
         Set<String> grupos = new HashSet<>();
-        System.out.println("\n");
+        System.out.println("\nNombre de los productos:");
         for (ProductoBase productoBase : productos) {
             grupos.add(productoBase.getProductoEspecifico());
         }
@@ -437,7 +483,7 @@ public class SistemaGestionProductos {
     // mostrar marca sin repetir
     public void mostrarMarcaProductos() {
         Set<String> grupos = new HashSet<>();
-        System.out.println("\n");
+        System.out.println("\nMarcas:");
         for (ProductoBase productoBase : productos) {
             grupos.add(productoBase.getMarca());
         }
@@ -449,7 +495,7 @@ public class SistemaGestionProductos {
 
     public void mostrarCodigoProductos() {
         Set<String> grupos = new HashSet<>();
-        System.out.println("\n");
+        System.out.println("\nCodigos:");
         for (ProductoBase productoBase : productos) {
             grupos.add(productoBase.getCodigo());
         }

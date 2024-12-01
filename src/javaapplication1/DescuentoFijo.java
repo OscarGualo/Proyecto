@@ -28,4 +28,3 @@ public class DescuentoFijo implements Descuento {
         System.out.println("Descuento aplicado: " + montoDescuento + " unidades monetarias");
     }
 }
-
