@@ -28,11 +28,15 @@ public class Main {
                 System.out.print("\n>> ");
                 try {
                     opc = Integer.parseInt(datos.nextLine());
+                    if((opc < 0)||(opc > 9)){
+                        System.out.print("\nError, el numero: " + opc + " no es una opcion\n");
+                        System.out.println("Intentelo de nuevo....");
+                    }
                 } catch (NumberFormatException e) {
+                    System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
                     opc = -1;
                 }
                 if ((opc< 0)||(opc > 9)) { 
-                    System.out.println("Opcion Invalida. Intentelo de nuevo");
                     bandera = false;
                 }else{
                     bandera = true;
@@ -198,24 +202,34 @@ public class Main {
                         }
                     }
                     break;
-
-                case 0:
+                default:
                     salida = 0;
                     System.out.print("\nSaliendo del programa...\n\n");
                     return;
-                default:
-                    throw new AssertionError("Salida");
             }
 
-            System.out
-                    .print("\nPresione 0 para salir del programa o cualquier numero para regresar al menu principal\n>> ");
-            salida = Integer.parseInt(datos.nextLine());
-
-            if (salida == 0) {
+            // try-catch para que solo se permita ingresar 1 ó 0
+            do {
+                try {
+                    System.out.print("\nPresione 0 para salir del programa o 1 para regresar al menu principal\n>> ");
+                    salida = Integer.parseInt(datos.nextLine());
+                    if((salida < 0)||(salida > 1)){
+                        System.out.print("\nError, el numero: " + salida + " no es una opcion\n");
+                        System.out.println("Intentelo de nuevo....");
+                    }
+                    
+                } catch (NumberFormatException e) {
+                    System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
+                    salida = -1;
+                }
+            } while ((salida < 0)||(salida > 1));
+            // if-else le da el valor de true a la bandera dependiendo si salida es = a 1 ó 0.
+            // si salida = 1 se regresa al menú principal pero si es, y si salida = 0 el programa se termina. 
+            if(salida != 0){
+                bandera = true;
+            }else{
                 bandera = false;
                 System.out.print("\nSaliendo del programa...\n\n");
-            } else if (salida == 1) {
-                bandera = true;
             }
         } while (bandera);
 
