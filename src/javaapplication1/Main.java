@@ -188,7 +188,7 @@ public class Main {
 
                 case 0:
                     salida = 0;
-                    System.out.print("\nSaliendo del programa...\n");
+                    System.out.print("\nSaliendo del programa...\n\n");
                     return;
                 default:
                     throw new AssertionError("Salida");
@@ -200,7 +200,7 @@ public class Main {
 
             if (salida == 0) {
                 bandera = false;
-                System.out.print("\nSaliendo del programa...\n");
+                System.out.print("\nSaliendo del programa...\n\n");
             } else if (salida == 1) {
                 bandera = true;
             }

@@ -112,9 +112,9 @@ public class SistemaGestionProductos {
 
     public void mostrarResultados(List<ProductoBase> productosFiltrados) {
         System.out
-                .println("\nCódigo:   " + "Marca:            " + "Presentación:           " + "Costo:    " + "Precio:  "
-                        + "Stock:  " + "Grupo:       " + "Categoría:             " + "Producto Específico:        "
-                        + "Descuento: ");
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
 
         if (productosFiltrados.isEmpty()) {
             System.out.println("No se encontraron productos que coincidan con los criterios.");
@@ -240,10 +240,9 @@ public class SistemaGestionProductos {
 
             // Si el producto se encuentra, pedimos los nuevos valores
             System.out
-                    .println("\nCódigo:   " + "Marca:            " + "Presentación:           " + "Costo:    "
-                            + "Precio:  "
-                            + "Stock:  " + "Grupo:       " + "Categoría:             " + "Producto Específico:        "
-                            + "Descuento: ");
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
 
             producto.mostrarDetalles();
 
@@ -334,10 +333,9 @@ public class SistemaGestionProductos {
             productos.remove(productoAEliminar);
             System.out.println("\nEl siguiente producto: ");
             System.out
-                    .println("\nCódigo:   " + "Marca:            " + "Presentación:           " + "Costo:    "
-                            + "Precio:  "
-                            + "Stock:  " + "Grupo:       " + "Categoría:             " + "Producto Específico:        "
-                            + "Descuento: ");
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
 
             productoAEliminar.mostrarDetalles();
             System.out.println("\nHa sido eliminado");
@@ -433,9 +431,9 @@ public class SistemaGestionProductos {
     // Mostrar todos los productos
     public void mostrarProductos() {
         System.out
-                .println("\nCódigo:   " + "Marca:            " + "Presentación:           " + "Costo:    " + "Precio:  "
-                        + "Stock:  " + "Grupo:       " + "Categoría:             " + "Producto Específico:        "
-                        + "Descuento: ");
+                .println("\nCódigo:   " + "Marca:            " + "Presentación:                     " + "Costo:    " + "Precio:  "
+                        + "Stock:  " + "Grupo:                       " + "Categoría:                          " + 
+                        "Producto Específico:          " + "Descuento: ");
 
         for (ProductoBase producto : productos) {
             System.out.println(producto);

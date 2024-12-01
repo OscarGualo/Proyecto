@@ -64,7 +64,7 @@ AC0001,Colgate,tubo de 75 mL,0.85,1.00,175,Articulos de Aseo,Crema Dental,Crema 
 AC0001,Oral-B,tubo de 75 mL,0.90,1.25,175,Articulos de Aseo,Crema Dental,Crema Dental,10
 AD0002,Deja,funda de 5 kg,1.70,2.30,140,Articulos de Aseo,Detergente en Polvo,Detergente,8
 AD0002,Ciclon,funda de 5 kg,2.00,2.50,140,Articulos de Aseo,Detergente en Polvo,Detergente,9
-AD0003,Ciclon,frasco de 1.9 L,2,25,3.00,140,Articulos de Aseo,Detergente Liquido,Detergente,8
+AD0003,Ciclon,frasco de 1.9 L,2,25,140,Articulos de Aseo,Detergente Liquido,Detergente,8
 AP0001,Familia,4 rollos,2.70,3.50,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
 AP0001,Familia,6 rollos,3.20,4.00,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
 AP0001,Hada,4 rollos,0.85,1.25,160,Articulos de Aseo,Papel Higenico,Papel Higenico,10
