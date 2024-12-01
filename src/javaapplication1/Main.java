@@ -13,19 +13,30 @@ public class Main {
         SistemaGestionProductos s1 = new SistemaGestionProductos();
 
         do {
-            System.out.println("\nSistema de Gestion de Alimentos");
-            System.out.println("1. Cargar Informacion");
-            System.out.println("2. Consultar por criterios");
-            System.out.println("3. Rango de precios");
-            System.out.println("4. Consulta de stock");
-            System.out.println("5. Ingreso  nuevos productos");
-            System.out.println("6. Actualizacion de productos ");
-            System.out.println("7. Elimar productos");
-            System.out.println("8. Ver inventario");
-            System.out.println("9. Aplicar descuentos a productos");
-            System.out.println("0. Salir del programa");
-            System.out.print("\n>> ");
-            opc = Integer.parseInt(datos.nextLine());
+            do {
+                System.out.println("\nSistema de Gestion de Alimentos");
+                System.out.println("1. Cargar Informacion");
+                System.out.println("2. Consultar por criterios");
+                System.out.println("3. Rango de precios");
+                System.out.println("4. Consulta de stock");
+                System.out.println("5. Ingreso  nuevos productos");
+                System.out.println("6. Actualizacion de productos ");
+                System.out.println("7. Elimar productos");
+                System.out.println("8. Ver inventario");
+                System.out.println("9. Aplicar descuentos a productos");
+                System.out.println("0. Salir del programa");
+                System.out.print("\n>> ");
+                try {
+                    opc = Integer.parseInt(datos.nextLine());
+                } catch (NumberFormatException e) {
+                    opc = -1;
+                }
+                if ((opc< 0)||(opc > 9)) { 
+                    System.out.println("Opcion Invalida. Intentelo de nuevo");
+                    bandera = false;
+                }
+                
+            } while (!bandera);
 
             switch (opc) {
                 case 1:
