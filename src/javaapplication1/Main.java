@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int opc = 0, contEntradas=0;
+        int opc = 0, contEntradas=7;
         int salida = 1;
         boolean bandera = true;
         Scanner datos = new Scanner(System.in);
@@ -77,9 +77,13 @@ public class Main {
                         * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
                         * letra en vez de un número)
                         */
+                        
                         try {
-                                opcCasoDos = Integer.parseInt(datos.nextLine());
-                                    if((opcCasoDos < 1)||(opcCasoDos > 5)){
+                            opcCasoDos = Integer.parseInt(datos.nextLine());
+                            if (opcCasoDos==0) {
+                                break;
+                            }
+                            if((opcCasoDos < 1)||(opcCasoDos > 5)){
                                 System.out.print("\nError, el numero: " + opcCasoDos + " no es una opcion\n");
                                 System.out.println("Intentelo de nuevo....");
                             }
@@ -100,7 +104,7 @@ public class Main {
                                 case 1:
                                     while (true) {
                                         s1.mostrarGrupos();
-                                        System.out.print("\nIngrese un grupo a buscar o (0 para salir):\n>> ");
+                                        System.out.print("\nIngrese un grupo a buscar o 0 para salir:\n>> ");
                                         String grupo = datos.nextLine();
                                         if (grupo.equals("0")) {
                                             break;
@@ -117,26 +121,24 @@ public class Main {
                                 case 2:
                                     while (true) {
                                         s1.mostrarCategorias();
-                                        System.out.print("\nIngrese la categoria a buscar :\n>> ");
+                                        System.out.print("\nIngrese la categoria a buscar o 0 para salir:\n>> ");
                                         String categoria = datos.nextLine();
-                                        
+                                        if (categoria.equals("0")) {
+                                            break;
+                                        }
                                         List<ProductoBase> productosPorCategoria = s1.consultarPorCategoria(categoria);
                                         if (productosPorCategoria.isEmpty()) {
                                             //Excepcion que se lanza si no se encuentran productos en la categoria
                                             throw new ProductoNoEncontradoException("No se encontraron productos en la categoria: " + categoria);  
                                         }
                                         s1.mostrarResultados(productosPorCategoria);
-                                        contEntradas = validarEntradas(0, 1, " para volver a ingresar una categoria");
-                                        if (contEntradas == 0){
-                                            break;
-                                        }
                                     }
                                     break;
 
                                 case 3:
                                     while (true) {
                                         s1.mostrarNombreProductos();
-                                        System.out.print("\nIngrese el nombre del producto o (0 para salir):\n>> ");
+                                        System.out.print("\nIngrese el nombre del producto o 0 para salir:\n>> ");
                                         String nombre = datos.nextLine();
                                         if (nombre.equals("0")) {
                                             break;
@@ -153,7 +155,7 @@ public class Main {
                                 case 4:
                                     while (true) {
                                         s1.mostrarMarcaProductos();
-                                        System.out.print("\nIngrese la marca del producto o (0 para salir):\n>> ");
+                                        System.out.print("\nIngrese la marca del producto o 0 para salir:\n>> ");
                                         String marca = datos.nextLine();
                                         if (marca.equals("0")) {
                                             break;
@@ -169,7 +171,7 @@ public class Main {
                                 case 5:
                                     while (true) {
                                         s1.mostrarCodigoProductos();
-                                        System.out.print("\nIngrese el codigo del producto o (0 para salir):\n>> ");
+                                        System.out.print("\nIngrese el codigo del producto o 0 para salir:\n>> ");
                                         String codigo = datos.nextLine();
                                         if (codigo.equals("0")) {
                                             break;
@@ -191,14 +193,17 @@ public class Main {
                         break;
                     case 3:
                         while (true) {
-
-                            System.out.print("\nIngrese el precio mínimo:\n>> ");
+                            System.out.print("\nIngrese el precio minimo o 000 para salir:\n>> ");
                             double precioMinimo = Double.parseDouble(datos.nextLine());
-                            System.out.print("Ingrese el precio máximo:\n>> ");
+                            if (precioMinimo == 000){
+                                break;
+                            }
+                            System.out.print("Ingrese el precio maximo o 000 para salir:\n>> ");
                             double precioMaximo = Double.parseDouble(datos.nextLine());
                             List<ProductoBase> productosPorRango = s1.consultarPorRangoDePrecio(precioMinimo, precioMaximo);
                             s1.mostrarResultados(productosPorRango);
-                            contEntradas = controlarEntradas();
+                            // contEntradas controla que solo pueda digitar 1 ó 0  para repetir el proceso o terminarlo
+                            contEntradas = validarEntradas(0, 1, " volver a ingresar el precio minimo y maximo");
 
                             if (contEntradas == 0) {
                                 break;
@@ -216,16 +221,20 @@ public class Main {
                         break;
                     case 7:
                         while (true) {
-                            System.out.print("\nIngrese el codigo del producto a eliminar: ");
+                            System.out.print("\nIngrese el codigo del producto a eliminar  o 0 para salir: ");
                             String codigoEliminar = datos.nextLine();
+                            // Permite salir sin ingresar ningun código
+                            if(codigoEliminar.equals("0")){
+                                contEntradas =0;
+                                break;
+                            }
                             s1.eliminarProducto(codigoEliminar);
-
                             contEntradas = validarEntradas(0, 1, " ingresar otro codigo");
-
-                        if (contEntradas == 0) {
-                            break;
+                            // if rompe el bloque para ir directo al menú principal.
+                            if (contEntradas == 0) {
+                                break;
+                            }
                         }
-                    }
                     break;
                 case 8:
                     s1.mostrarProductos();
@@ -236,7 +245,8 @@ public class Main {
                         /*
                         * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
                         * no se encuentra en las opciones del menú 
-                        */    
+                        */
+                           
                         do {
                             System.out.println("Escoja el tipo de descuento: ");
                             System.out.println("\n1. Descuento porcentual");
@@ -288,8 +298,13 @@ public class Main {
                     System.out.print("\nSaliendo del programa...\n\n");
                     return;
                 }
- 
-            salida = validarEntradas(0, 1, "regresar al menu principal");
+            // Salida valida que el valor ingresado sea solo 1 ó 0 y si no cumple vuelve a solicitar el ingreso
+            if (contEntradas ==0){
+                salida = 1;
+            }else{
+                salida = validarEntradas(0, 1, "regresar al menu principal");
+            }
+            // if-else depende del resultado  de salida 
             if(salida != 0){
                 bandera = true;
             }else{
@@ -314,7 +329,7 @@ public class Main {
             * letra en vez de un número)
             */
            try {
-                 System.out.println("\nIngrese 0 para salir o 1 para " + mensaje +" \n>> ");
+                 System.out.println("\nIngrese 0 para regresar al menu principal o 1 para " + mensaje +" \n>> ");
                  opcion = Integer.parseInt(scanner.nextLine());
                  if((opcion < num1)||(opcion > num2)){
                      System.out.print("\nError, el numero: " + opcion + " no es una opcion\n");
@@ -328,29 +343,8 @@ public class Main {
         return opcion;
     }
 
-    public static int controlarEntradas (){
-        Scanner scanner = new Scanner(System.in);
-        int opcion =0;
-        do {
-            /*
-            * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
-            * letra en vez de un número)
-            */
-           try {
-                 System.out.println("\nIngrese 0 para salir o 1 para volver a repetir el proceso anterior\n>> ");
-                 opcion = Integer.parseInt(scanner.nextLine());
-                 if((opcion < 0)||(opcion > 1)){
-                     System.out.print("\nError, el numero: " + opcion + " no es una opcion\n");
-                     System.out.println("Intentelo de nuevo....");
-                 }
-             } catch (NumberFormatException e) {
-                 System.out.print("\nSolo se permiten numeros enteros. Intentelo de nuevo ....\n");
-                 opcion = -1;
-             }
-         }while ((opcion < 0)||(opcion > 1));
-        return opcion;
-    }
 }
+
 
 class OperacionInvalidaException extends Exception {
     public OperacionInvalidaException(String mensaje) {
