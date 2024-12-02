@@ -167,6 +167,7 @@ public class SistemaGestionProductos {
 
     public void ingresarNuevoProducto() {
         Scanner scanner = new Scanner(System.in);
+        int opcion =0;
 
         while (true) {
             System.out.println("\nIngrese los detalles del nuevo producto:");
@@ -180,11 +181,18 @@ public class SistemaGestionProductos {
             System.out.print("Presentación: ");
             String presentacion = scanner.nextLine();
 
+            /* do {
+                try {
+                    
+                } catch (NumberFormatException e) {
+                    
+                }
+            } while (true); */
             System.out.print("Costo: ");
-            double costo = Double.parseDouble(scanner.nextLine());
-
+            double costo = revisarNumero();
+            
             System.out.print("Precio de venta: ");
-            double precioVenta = Double.parseDouble(scanner.nextLine());
+            double precioVenta = revisarNumero();
 
             System.out.print("Stock: ");
             int stock = Integer.parseInt(scanner.nextLine());
@@ -199,7 +207,7 @@ public class SistemaGestionProductos {
             String productoEspecifico = scanner.nextLine();
 
             System.out.print("Descuento: ");
-            double descuento = Double.parseDouble(scanner.nextLine());
+            double descuento = revisarNumero();
 
             // Crear el nuevo producto
             ProductoBase nuevoProducto = new ProductoEspecifico(codigo, marca, presentacion, costo, precioVenta, stock,
@@ -209,12 +217,50 @@ public class SistemaGestionProductos {
             productos.add(nuevoProducto);
             System.out.println("\nProducto agregado correctamente.\n");
 
-            System.out.println("\nIngrese 0 para salir o cualquier numero para ingresar otro producto\n>> ");
-            String opcion = scanner.nextLine();
-            if (opcion.equals("0")) {
+            do {
+               /*
+               * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+               * letra en vez de un número)
+               */
+              try {
+                    System.out.println("\nIngrese 0 para salir o 1 para ingresar otro producto\n>> ");
+                    opcion = Integer.parseInt(scanner.nextLine());
+                    if((opcion < 0)||(opcion > 1)){
+                        System.out.print("\nError, el numero: " + opcion + " no es una opcion\n");
+                        System.out.println("Intentelo de nuevo....");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
+                    opcion = -1;
+                }
+            }while ((opcion < 0)||(opcion > 1));
+
+            if (opcion == 0){
                 break;
             }
         }
+    }
+    /**
+     * Descripción: Revisa que el valor ingresado no sea un String y menor a cero.
+     *              En el caso que sea menor a 0 o una letra solicita que se repita
+     *              el ingreso de datos
+     * @return un parámetro tipo double.
+     */
+    private double revisarNumero (){
+        Scanner datos = new Scanner(System.in);
+        double numero = 0;
+        do {
+            try {
+                numero = Integer.parseInt(datos.nextLine());
+                if(numero < 0){
+                    System.out.println("Error, no permiten números menores 0");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("No se permite letras. Ingrese de nuevo");
+                numero = -1;
+            }
+        } while (numero < 0);
+        return numero;
     }
 
     public void actualizarProducto() {
