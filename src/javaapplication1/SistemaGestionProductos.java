@@ -181,21 +181,31 @@ public class SistemaGestionProductos {
             System.out.print("Presentación: ");
             String presentacion = scanner.nextLine();
 
-            /* do {
-                try {
-                    
-                } catch (NumberFormatException e) {
-                    
-                }
-            } while (true); */
             System.out.print("Costo: ");
             double costo = revisarNumero();
             
             System.out.print("Precio de venta: ");
             double precioVenta = revisarNumero();
 
-            System.out.print("Stock: ");
-            int stock = Integer.parseInt(scanner.nextLine());
+            int stock =0;    
+            while (true) {
+                opcion = 0;
+                try {
+                    System.out.print("Stock: ");
+                    stock = Integer.parseInt(scanner.nextLine());
+                    if(stock < 0){
+                        System.out.println("No se premite numeros menores a 0");
+                        opcion = -1;
+                    }
+                } catch (NumberFormatException e) {
+                     System.out.print("\nSolo se permiten numeros enteros\n");
+                     System.out.println("Ingrese de nuevo");
+                     opcion = -1;
+                }
+                    if(opcion == 0){
+                        break;
+                    }
+                }
 
             System.out.print("Grupo: ");
             String grupo = scanner.nextLine();
@@ -251,7 +261,7 @@ public class SistemaGestionProductos {
         double numero = 0;
         do {
             try {
-                numero = Integer.parseInt(datos.nextLine());
+                numero = Double.parseDouble(datos.nextLine());
                 if(numero < 0){
                     System.out.println("Error, no permiten números menores 0");
                 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int opc = 0;
+        int opc = 0, contEntradas=0;
         int salida = 1;
         boolean bandera = true;
         Scanner datos = new Scanner(System.in);
@@ -196,9 +196,9 @@ public class Main {
                             double precioMaximo = Double.parseDouble(datos.nextLine());
                             List<ProductoBase> productosPorRango = s1.consultarPorRangoDePrecio(precioMinimo, precioMaximo);
                             s1.mostrarResultados(productosPorRango);
-                            System.out.print("\nIngrese 0 para salir: \n>> ");
-                            String opcion = datos.nextLine();
-                            if (opcion.equals("0")) {
+                            contEntradas = controlarEntradas();
+
+                            if (contEntradas == 0) {
                                 break;
                             }
                         }
@@ -218,10 +218,9 @@ public class Main {
                             String codigoEliminar = datos.nextLine();
                             s1.eliminarProducto(codigoEliminar);
 
-                            System.out.print("\nIngrese 0 para salir o cualquier numero para eliminar otro producto\n>> ");
-                            String opcion = datos.nextLine();
+                            contEntradas = controlarEntradas();
 
-                        if (opcion.equals("0")) {
+                        if (contEntradas == 0) {
                             break;
                         }
                     }
@@ -319,6 +318,28 @@ public class Main {
             }
         } while (bandera);
 
+    }
+    public static int controlarEntradas (){
+        Scanner scanner = new Scanner(System.in);
+        int opcion =0;
+        do {
+            /*
+            * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+            * letra en vez de un número)
+            */
+           try {
+                 System.out.println("\nIngrese 0 para salir o 1 para volver a repetir el proceso anterior\n>> ");
+                 opcion = Integer.parseInt(scanner.nextLine());
+                 if((opcion < 0)||(opcion > 1)){
+                     System.out.print("\nError, el numero: " + opcion + " no es una opcion\n");
+                     System.out.println("Intentelo de nuevo....");
+                 }
+             } catch (NumberFormatException e) {
+                 System.out.print("\nSolo se permiten numeros enteros. Intentelo de nuevo ....\n");
+                 opcion = -1;
+             }
+         }while ((opcion < 0)||(opcion > 1));
+        return opcion;
     }
 }
 
