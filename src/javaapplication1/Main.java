@@ -117,17 +117,19 @@ public class Main {
                                 case 2:
                                     while (true) {
                                         s1.mostrarCategorias();
-                                        System.out.print("\nIngrese la categoria a buscar o (0 para salir):\n>> ");
+                                        System.out.print("\nIngrese la categoria a buscar :\n>> ");
                                         String categoria = datos.nextLine();
-                                        if (categoria.equals("0")) {
-                                            break;
-                                        }
+                                        
                                         List<ProductoBase> productosPorCategoria = s1.consultarPorCategoria(categoria);
                                         if (productosPorCategoria.isEmpty()) {
                                             //Excepcion que se lanza si no se encuentran productos en la categoria
                                             throw new ProductoNoEncontradoException("No se encontraron productos en la categoria: " + categoria);  
                                         }
                                         s1.mostrarResultados(productosPorCategoria);
+                                        contEntradas = validarEntradas(0, 1, " para volver a ingresar una categoria");
+                                        if (contEntradas == 0){
+                                            break;
+                                        }
                                     }
                                     break;
 
@@ -214,11 +216,11 @@ public class Main {
                         break;
                     case 7:
                         while (true) {
-                            System.out.print("\nIngrese el código del producto a eliminar: ");
+                            System.out.print("\nIngrese el codigo del producto a eliminar: ");
                             String codigoEliminar = datos.nextLine();
                             s1.eliminarProducto(codigoEliminar);
 
-                            contEntradas = controlarEntradas();
+                            contEntradas = validarEntradas(0, 1, " ingresar otro codigo");
 
                         if (contEntradas == 0) {
                             break;
@@ -286,30 +288,8 @@ public class Main {
                     System.out.print("\nSaliendo del programa...\n\n");
                     return;
                 }
-
-            /*
-            * do-while permite que se vuelva repetir el ingreso de datos, solo si el número ingresado
-            * no se encuentra en las opciones del menú 
-            */
-            do {
-                /*
-                 * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
-                 * letra en vez de un número)
-                 */
-                try {
-                    System.out.print("\nPresione 0 para salir del programa o 1 para regresar al menu principal\n>> ");
-                    salida = Integer.parseInt(datos.nextLine());
-                    if((salida < 0)||(salida > 1)){
-                        System.out.print("\nError, el numero: " + salida + " no es una opcion\n");
-                        System.out.println("Intentelo de nuevo....");
-                    } 
-                } catch (NumberFormatException e) {
-                    System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
-                    salida = -1;
-                }
-            } while ((salida < 0)||(salida > 1));
-            // if-else le da el valor de true a la bandera dependiendo si salida es = a 1 ó 0.
-            // si salida = 1 se regresa al menú principal pero si es, y si salida = 0 el programa se termina. 
+ 
+            salida = validarEntradas(0, 1, "regresar al menu principal");
             if(salida != 0){
                 bandera = true;
             }else{
@@ -319,6 +299,35 @@ public class Main {
         } while (bandera);
 
     }
+    /**
+     * Description: Método para validar que la entrada solo sea las que se prensenta en las opciones.
+     * @param num1 parámetro tipo int.
+     * @param num2 parámetro tipo int.
+     * @return un int.
+     */
+    public static int validarEntradas(int num1, int num2, String mensaje){
+        Scanner scanner = new Scanner(System.in);
+        int opcion =0;
+        do {
+            /*
+            * try-catch atrapa excepcionestipo  NumberFormatException (sale si se ingresa una
+            * letra en vez de un número)
+            */
+           try {
+                 System.out.println("\nIngrese 0 para salir o 1 para " + mensaje +" \n>> ");
+                 opcion = Integer.parseInt(scanner.nextLine());
+                 if((opcion < num1)||(opcion > num2)){
+                     System.out.print("\nError, el numero: " + opcion + " no es una opcion\n");
+                     System.out.println("Intentelo de nuevo....");
+                 }
+             } catch (NumberFormatException e) {
+                 System.out.print("\nSolo se permiten numeros enteros. Intentelo de nuevo ....\n");
+                 opcion = num1 -1;
+             }
+         }while ((opcion < num1)||(opcion > num2));
+        return opcion;
+    }
+
     public static int controlarEntradas (){
         Scanner scanner = new Scanner(System.in);
         int opcion =0;
