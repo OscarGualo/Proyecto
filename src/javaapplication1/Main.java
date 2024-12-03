@@ -12,6 +12,7 @@ public class Main {
         boolean informacionCargada = false;
         Scanner datos = new Scanner(System.in);
         SistemaGestionProductos s1 = new SistemaGestionProductos();
+        Empresa empresa = new Empresa("MULTICOMERCIO", s1);
 
         do {
             /*
@@ -20,6 +21,7 @@ public class Main {
              * no se encuentra en las opciones del menú
              */
             do {
+                System.out.println("*------ EMPRESA " + empresa.getNombreEmpresa() + " -----*");
                 System.out.println("\nSistema de Gestion de Alimentos");
                 System.out.println("1. Cargar Informacion");
                 System.out.println("2. Consultar por criterios");
