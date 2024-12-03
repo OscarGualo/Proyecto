@@ -444,37 +444,40 @@ public class SistemaGestionProductos {
         Scanner scanner = new Scanner(System.in);
         boolean productoEncontrado = false;
         double descuentoFijo;
-
+        
         // Pedimos el monto del descuento fijo por consola
         System.out.print("\nIngresa el monto de descuento fijo (en unidades monetarias): ");
         descuentoFijo = Double.parseDouble(scanner.nextLine());
 
         // Creamos una instancia de DescuentoFijo
         DescuentoFijo descuento = new DescuentoFijo(descuentoFijo);
-
+        int i = 1;
         // Recorremos los productos
         for (ProductoBase producto : productos) {
-            // Buscamos el producto por su código
+            double PrecioAntiguo = producto.getPrecioVenta();
             if (producto.getCodigo().equalsIgnoreCase(codigoProducto)) {
                 productoEncontrado = true;
 
                 // Aplicamos el descuento fijo usando el método de DescuentoFijo
                 double nuevoPrecio = descuento.calcularPrecioConDescuento(producto.getPrecioVenta());
-
+                System.out.print("\n" + i + ". ");
                 // Aseguramos que el precio no quede negativo
                 if (nuevoPrecio < 0) {
                     System.out
-                            .println("\nEl descuento es mayor que el precio del producto. El precio se ajustará a 0.");
+                            .println("El descuento es mayor que el precio del producto. El precio se ajustará a 0.");
                     producto.setPrecioVenta(0);
                 } else {
                     producto.setPrecioVenta(nuevoPrecio);
                 }
 
+                
                 // Mostramos el resultado
-                System.out.println(
-                        "\nDescuento de " + descuentoFijo + " aplicado al producto con código: "
+                System.out.print(
+                        "Descuento de " + descuentoFijo + " aplicado al producto: " + producto.getProductoEspecifico() + "(" + producto.getPresentacion() +") con codigo "
                                 + producto.getCodigo());
-                System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
+                System.out.println("\nPrecio sin descuento: " + PrecioAntiguo + "$\nNuevo precio de venta: " + producto.getPrecioVenta());
+
+                i++;
             }
         }
 
