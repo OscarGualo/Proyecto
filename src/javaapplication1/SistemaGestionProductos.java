@@ -430,7 +430,7 @@ public class SistemaGestionProductos {
         for (ProductoBase producto : productos) {
             if (producto.getCodigo().equalsIgnoreCase(codigo)) {
                 producto.aplicarDescuento();
-                System.out.println("\nDescuento aplicado al producto con código: " + codigo);
+                System.out.println("\nDescuento del " + producto.getDescuento() + " % aplicado al producto con código: " + codigo);
                 System.out.println("Nuevo precio de venta: " + producto.getPrecioVenta());
                 break;
             }
