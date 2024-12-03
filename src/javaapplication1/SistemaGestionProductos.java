@@ -152,13 +152,13 @@ public class SistemaGestionProductos {
         } else {
             // Imprimir el encabezado con el formato adecuado
             System.out
-                    .println(String.format("%-30s %-20s %-20s %-10s", "\nProducto:", " Código:", "Marca:", "Stock:\n"));
+                    .println(String.format("%-30s %-31s %-20s %-10s", "\nProducto:", " Presentacion:", "Marca:", "Stock:\n"));
 
             // Recorrer la lista de productos y mostrar cada uno con el formato adecuado
             for (ProductoBase producto : productos) {
-                System.out.println(String.format("%-30s %-19s %-20s %-10d",
+                System.out.println(String.format("%-30s %-30s %-20s %-10d",
                         producto.getProductoEspecifico(),
-                        producto.getCodigo(),
+                        producto.getPresentacion(),
                         producto.getMarca(),
                         producto.getStock()));
             }
@@ -504,9 +504,7 @@ public class SistemaGestionProductos {
             grupos.add(productoBase.getGrupo());
         }
 
-        for (String grupo : grupos) {
-            System.out.println("  - " + grupo);
-        }
+        imprimirEnFormaDeTabla(grupos, 2);
     }
 
     // mostrar categoria sin repetir
@@ -517,9 +515,7 @@ public class SistemaGestionProductos {
             grupos.add(productoBase.getCategoria());
         }
 
-        for (String grupo : grupos) {
-            System.out.println("  - " + grupo);
-        }
+        imprimirEnFormaDeTabla(grupos, 4);
 
     }
 
@@ -531,9 +527,7 @@ public class SistemaGestionProductos {
             grupos.add(productoBase.getProductoEspecifico());
         }
 
-        for (String grupo : grupos) {
-            System.out.println("  - " + grupo);
-        }
+        imprimirEnFormaDeTabla(grupos, 4);
     }
 
     // mostrar marca sin repetir
@@ -544,9 +538,7 @@ public class SistemaGestionProductos {
             grupos.add(productoBase.getMarca());
         }
 
-        for (String grupo : grupos) {
-            System.out.println("  - " + grupo);
-        }
+        imprimirEnFormaDeTabla(grupos, 4);
     }
 
     public void mostrarCodigoProductos() {
@@ -556,9 +548,41 @@ public class SistemaGestionProductos {
             grupos.add(productoBase.getCodigo());
         }
 
-        for (String grupo : grupos) {
-            System.out.println("  - " + grupo);
-        }
+        imprimirEnFormaDeTabla(grupos, 4);
 
     }
+
+    public void imprimirEnFormaDeTabla(Set<String> set, int columnas) {
+        List<String> lista = new ArrayList<>(set);
+        int filas = (int) Math.ceil((double) lista.size() / columnas);
+        String[][] table = new String[filas][columnas];
+
+        // Rellenar la tabla con los elementos de la lista
+        for (int i = 0; i < lista.size(); i++) {
+            table[i / columnas][i % columnas] = lista.get(i);
+        }
+
+        // Calcular el ancho máximo de cada columna
+        int[] maxWidths = new int[columnas];
+        for (int col = 0; col < columnas; col++) {
+            for (int row = 0; row < filas; row++) {
+                if (table[row][col] != null && table[row][col].length() > maxWidths[col]) {
+                    maxWidths[col] = table[row][col].length();
+                }
+            }
+        }
+
+        // Imprimir la tabla
+        
+        for (int row = 0; row < filas; row++) {
+            for (int col = 0; col < columnas; col++) {
+                if (table[row][col] != null) {
+                    System.out.print(String.format("%-" + (maxWidths[col] + 4) + "s", "  - " + table[row][col]));
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
 }
