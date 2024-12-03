@@ -266,14 +266,16 @@ public class Main {
                          * ingresado
                          * no se encuentra en las opciones del menú
                          */
-
                         do {
-                            System.out.println("Escoja el tipo de descuento: ");
+                            System.out.println("Escoja el tipo de descuento o ingrese 0 para salir: ");
                             System.out.println("\n1. Descuento porcentual");
                             System.out.print("2. Descuento fijo \n>> ");
                             try {
                                 opcCase9 = Integer.parseInt(datos.nextLine());
-                                if ((opcCase9 < 1) || (opcCase9 > 2)) {
+                                if(opcCase9 == 0){
+                                    break;
+                                }
+                                if ((opcCase9 < 0) || (opcCase9 > 2)) {
                                     System.out.print("\nError, el numero: " + opcCase9 + " no es una opcion\n");
                                     System.out.println("Intentelo de nuevo....");
                                 }
@@ -281,7 +283,7 @@ public class Main {
                                 System.out.print("\nNo se permiten letras. Intentelo de nuevo ....\n");
                                 opcCase9 = -1;
                             }
-                            if ((opcCase9 < 1) || (opcCase9 > 2)) {
+                            if ((opcCase9 < 0) || (opcCase9 > 2)) {
                                 bandera = false;
                             } else {
                                 bandera = true;
@@ -302,9 +304,12 @@ public class Main {
                                 codigoDos = datos.nextLine();
                                 s1.aplicarDescuentoFijoPorCodigo(codigoDos);
                                 break;
-
                         }
 
+                        if (opcCase9 == 0){
+                            contEntradas =0;
+                            break;
+                        }
                         System.out.print("\nIngrese cualquier numero para aplicar otro descuento o 0 para salir1\n>> ");
                         String opcion = datos.nextLine();
 

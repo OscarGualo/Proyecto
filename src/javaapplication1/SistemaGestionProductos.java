@@ -435,6 +435,7 @@ public class SistemaGestionProductos {
                 break;
             }
         }
+        
     }
 
     /*
@@ -446,8 +447,22 @@ public class SistemaGestionProductos {
         double descuentoFijo;
         
         // Pedimos el monto del descuento fijo por consola
-        System.out.print("\nIngresa el monto de descuento fijo (en unidades monetarias): ");
-        descuentoFijo = Double.parseDouble(scanner.nextLine());
+
+        while (true) {
+            try {
+                System.out.print("\nIngresa el monto de descuento fijo (en unidades monetarias): ");
+                descuentoFijo = Double.parseDouble(scanner.nextLine());
+                if(descuentoFijo < 0){
+                    System.out.println("No se perimten descuentos menores que cero. Intentelo de nuevo..");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: No se permiten letras. Intentelo de nuevo..");
+                descuentoFijo = -1;
+            }
+            if (descuentoFijo >=0){
+                break;
+            }
+        }
 
         // Creamos una instancia de DescuentoFijo
         DescuentoFijo descuento = new DescuentoFijo(descuentoFijo);
